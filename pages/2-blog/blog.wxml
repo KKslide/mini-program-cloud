@@ -1,0 +1,90 @@
+<!-- 自定义头部 -->
+<view class='nav bg-black' style='height:{{navH}}px;'>
+	<!-- 搜索框 -->
+	<view class='nav-title'>
+		<view class="INinputheader">
+			<icon class="INsearchicon" type="search" size="12" />
+			<input class="weui-input" placeholder="输入搜索内容" />
+		</view>
+	</view>
+</view>
+<!-- 导航条 -->
+<view class="blog_cate" style="top:{{navH}}px;">
+	<scroll-view class="blog_cate_list" scroll-x="true" enhanced="true" enable-flex="true" style="top:{{navH+46}}px">
+		<view wx:for="{{categoryList}}" wx:key="index" data-cate="{{item}}"
+			class="blog_cate_list_item {{item.name==curActiveClass?'active':''}}" bindtap="switchCate">{{item.name}}
+		</view>
+	</scroll-view>
+	<view class="blog_cate_list_more">
+		<text class="fa fa-outdent"></text>
+	</view>
+</view>
+<scroll-view class='overflow' style='height:calc(100vh - {{navH}}px);padding-top:{{navH}}px;' scroll-y refresher-enabled="true">
+	<view class='hidden'>
+		<view class="blog_page">
+			<!-- 标题 -->
+			<!-- <view class="t_title">Blog</view> -->
+			<!-- 列表 -->
+			<view class="blog_list">
+				<view class="blog_item" wx:if="{{false}}">
+					<!-- 文章标题 -->
+					<view class="blog_title">This is A Title</view>
+					<!-- 文章信息 -->
+					<view class="blog_info">
+						<view class="blog_info_viewnum"><text class="fa fa-eye"></text>99</view>
+						<text class="blog_info_divide"> | </text>
+						<view class="blog_info_comment_num"><text class="fa fa-comment-o"></text>99</view>
+						<text class="blog_info_divide"> | </text>
+						<view class="blog_info_addtime"><text class="fa fa-clock-o"></text>2020-12-31 23:59:59</view>
+						<text class="blog_info_divide"> | </text>
+						<view class="blog_info_category"><text class="fa fa-tag"></text>Blog</view>
+					</view>
+					<!-- 文章描述 -->
+					<view class="blog_description">
+						<text>THIS IS SOME DESCRIPTION</text>
+					</view>
+					<!-- 文章背景图 -->
+					<view class="blog_img">
+						<image src="http://example.kkslide.fun/upload_083d632b64b0862137d29a1bff4af1c9" mode="widthFix"
+							lazy-load="true" data-param="AAA" bindtap="go2detail"></image>
+					</view>
+					<!-- 文章链接 -->
+					<view class="blog_link" data-param="AAA" bindtap="go2detail">阅读全文 >></view>
+				</view>
+				<view class="blog_item" wx:for="{{contentList}}">
+					<!-- 文章标题 -->
+					<view class="blog_title">{{item.title}}</view>
+					<!-- 文章信息 -->
+					<view class="blog_info">
+						<view class="blog_info_viewnum"><text class="fa fa-eye"></text>{{item.viewnum}}</view>
+						<text class="blog_info_divide"> | </text>
+						<view class="blog_info_comment_num"><text class="fa fa-comment-o"></text>{{item.comment.length}}</view>
+						<text class="blog_info_divide"> | </text>
+						<view class="blog_info_addtime"><text class="fa fa-clock-o"></text>2020-12-31</view>
+						<text class="blog_info_divide"> | </text>
+						<view class="blog_info_category"><text class="fa fa-tag"></text>{{item.category[0].name}}</view>
+					</view>
+					<!-- 文章描述 -->
+					<view class="blog_description">
+						<text>{{item.description}}</text>
+					</view>
+					<!-- 文章背景图 -->
+					<view class="blog_img blog_video">
+						<text class="fa fa-play-circle-o"></text>
+						<image src="{{item.poster}}"
+							mode="widthFix" lazy-load="true"></image>
+					</view>
+					<!-- 文章链接 -->
+					<view class="blog_link">CHECK >></view>
+				</view>
+				<view class="blog_item" wx:if="{{noContent}}">
+					<view class="blog_list_empty">
+						<text>THERE`S NOTHING HERE...\n</text>
+						<text>\n</text>
+						<text>PLAESE CHECK LATER</text>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+</scroll-view>

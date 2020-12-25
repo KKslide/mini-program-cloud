@@ -1,0 +1,445 @@
+@charset "UTF-8";
+/**
+ * author: Di (微信小程序开发工程师)
+ * organization: WeAppDev(微信小程序开发论坛)(http://weappdev.com)
+ *               垂直微信小程序开发交流社区
+ * 
+ * github地址: https://github.com/icindy/wxParse
+ * 
+ * for: 微信小程序富文本解析
+ * detail : http://weappdev.com/t/wxparse-alpha0-1-html-markdown/184
+ */
+.wxParse {
+  margin: 0 5px;
+  font-family: Helvetica,sans-serif;
+  font-size: 28rpx;
+  color: #666;
+  line-height: 1.8;
+}
+
+view {
+  word-break: break-all;
+  overflow: auto;
+}
+
+.wxParse-inline {
+  display: inline;
+  margin: 0;
+  padding: 0;
+}
+
+/*//标题 */
+.wxParse-div {
+  margin: 0;
+  padding: 0;
+}
+
+.wxParse-h1 {
+  font-size: 2em;
+  margin: .67em 0;
+}
+
+.wxParse-h2 {
+  font-size: 1.5em;
+  margin: .75em 0;
+}
+
+.wxParse-h3 {
+  font-size: 1.17em;
+  margin: .83em 0;
+}
+
+.wxParse-h4 {
+  margin: 1.12em 0;
+}
+
+.wxParse-h5 {
+  font-size: .83em;
+  margin: 1.5em 0;
+}
+
+.wxParse-h6 {
+  font-size: .75em;
+  margin: 1.67em 0;
+}
+
+.wxParse-h1 {
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: .9em;
+}
+
+.wxParse-h2 {
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: .34em;
+}
+
+.wxParse-h3 {
+  font-weight: 400;
+  font-size: 15px;
+  margin-bottom: .34em;
+}
+
+.wxParse-h4 {
+  font-weight: 400;
+  font-size: 14px;
+  margin-bottom: .24em;
+}
+
+.wxParse-h5 {
+  font-weight: 400;
+  font-size: 13px;
+  margin-bottom: .14em;
+}
+
+.wxParse-h6 {
+  font-weight: 400;
+  font-size: 12px;
+  margin-bottom: .04em;
+}
+
+.wxParse-h1, .wxParse-h2, .wxParse-h3, .wxParse-h4, .wxParse-h5, .wxParse-h6, .wxParse-b, .wxParse-strong {
+  font-weight: bolder;
+}
+
+.wxParse-i, .wxParse-cite, .wxParse-em, .wxParse-var, .wxParse-address {
+  font-style: italic;
+}
+
+.wxParse-pre, .wxParse-tt, .wxParse-code, .wxParse-kbd, .wxParse-samp {
+  font-family: monospace;
+}
+
+.wxParse-pre {
+  white-space: pre;
+}
+
+.wxParse-big {
+  font-size: 1.17em;
+}
+
+.wxParse-small, .wxParse-sub, .wxParse-sup {
+  font-size: .83em;
+}
+
+.wxParse-sub {
+  vertical-align: sub;
+}
+
+.wxParse-sup {
+  vertical-align: super;
+}
+
+.wxParse-s, .wxParse-strike, .wxParse-del {
+  text-decoration: line-through;
+}
+
+/*wxparse-自定义个性化的css样式*/
+/*增加video的css样式*/
+.wxParse-strong, .wxParse-s {
+  display: inline;
+}
+
+.wxParse-a {
+  color: deepskyblue;
+  word-break: break-all;
+  overflow: auto;
+}
+
+.wxParse-video {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.wxParse-video-video {
+  width: 100%;
+}
+
+.wxParse-img {
+  /*background-color: #efefef;*/
+  overflow: hidden;
+}
+
+.wxParse-blockquote {
+  margin: 0;
+  padding: 10px 0 10px 5px;
+  font-family: Courier, Calibri,"宋体";
+  background: #f5f5f5;
+  border-left: 3px solid #dbdbdb;
+}
+
+.wxParse-code, .wxParse-wxxxcode-style {
+  display: inline;
+  background: #f5f5f5;
+}
+
+.wxParse-ul {
+  margin: 20rpx 10rpx;
+}
+
+.wxParse-li, .wxParse-li-inner {
+  display: flex;
+  align-items: baseline;
+  margin: 10rpx 0;
+}
+
+.wxParse-li-text {
+  align-items: center;
+  line-height: 20px;
+}
+
+.wxParse-li-circle {
+  display: inline-flex;
+  width: 5px;
+  height: 5px;
+  background-color: #333;
+  margin-right: 5px;
+}
+
+.wxParse-li-square {
+  display: inline-flex;
+  width: 10rpx;
+  height: 10rpx;
+  background-color: #333;
+  margin-right: 5px;
+}
+
+.wxParse-li-ring {
+  display: inline-flex;
+  width: 10rpx;
+  height: 10rpx;
+  border: 2rpx solid #333;
+  border-radius: 50%;
+  background-color: #fff;
+  margin-right: 5px;
+}
+
+/*.wxParse-table{
+    width: 100%;
+    height: 400px;
+}
+.wxParse-thead,.wxParse-tfoot,.wxParse-tr{
+    display: flex;
+    flex-direction: row;
+}
+.wxParse-th,.wxParse-td{
+    display: flex;
+    width: 580px;
+    overflow: auto;
+}*/
+.wxParse-u {
+  text-decoration: underline;
+}
+
+.wxParse-hide {
+  display: none;
+}
+
+.WxEmojiView {
+  align-items: center;
+  overflow: hidden;
+}
+
+.wxEmoji {
+  width: 16px;
+  height: 16px;
+}
+
+.wxParse-tr {
+  display: flex;
+  border-right: 1px solid #e0e0e0;
+  border-bottom: 1px solid #e0e0e0;
+  border-top: 1px solid #e0e0e0;
+}
+
+.wxParse-th,
+.wxParse-td {
+  flex: 1;
+  padding: 5px;
+  font-size: 28rpx;
+  border-left: 1px solid #e0e0e0;
+  word-break: break-all;
+}
+
+.wxParse-td:last {
+  border-top: 1px solid #e0e0e0;
+}
+
+.wxParse-th {
+  background: #f0f0f0;
+  border-top: 1px solid #e0e0e0;
+}
+
+.wxParse-del {
+  display: inline;
+}
+
+.wxParse-figure {
+  overflow: hidden;
+}
+
+pre,
+.wxParse-pre {
+  display: block;
+  padding: 9px;
+  margin: 0 0 9.5px;
+  font-size: 10px;
+  line-height: 1.78;
+  word-break: break-all;
+  word-wrap: break-word;
+  color: #333333;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 0px;
+}
+
+.wxParse-hr {
+  display: block;
+  height: 0px;
+  border: 0;
+  border-top: 3px solid #ccc;
+  margin: 20rpx 0;
+}
+
+.content_page {
+  padding: 20rpx;
+  position: relative;
+  margin-bottom: 150rpx;
+}
+
+.content_page image.content_img {
+  width: 100%;
+}
+
+.content_page .content_title {
+  font-size: 40rpx;
+  font-weight: bold;
+  padding: 15rpx;
+}
+
+.content_page .content_info {
+  display: flex;
+  justify-content: flex-start;
+  font-size: 25rpx;
+}
+
+.content_page .content_info view .fa {
+  margin-right: 10rpx;
+}
+
+.content_page .content_info .content_info_divide {
+  margin: 0 15rpx;
+}
+
+.content_page .content_article {
+  padding: 20rpx;
+}
+
+.content_page .content_article .content_video video {
+  width: 100%;
+}
+
+.content_page .content_comment form.content_comment_form textarea {
+  width: 90%;
+  height: 100rpx;
+  border: 1px solid #ccc;
+  padding: 3%;
+}
+
+.content_page .content_comment form.content_comment_form .btn-area button {
+  color: #000;
+}
+
+.content_page .comment_list .comment_list_ul .comment_list_li .comment_list_item_body {
+  padding: 15rpx;
+  box-sizing: border-box;
+  padding-left: 140rpx;
+  position: relative;
+}
+
+.content_page .comment_list .comment_list_ul .comment_list_li .comment_list_item_body .userinfo_avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin-top: 20rpx;
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.content_page .comment_list .comment_list_ul .comment_list_li .comment_list_item_body .comment_list_item_username {
+  font-weight: bold;
+  font-size: 35rpx;
+}
+
+.content_page .comment_list .comment_list_ul .comment_list_li .comment_list_item_body .comment_list_item_msg {
+  font-size: 20rpx;
+  font-weight: lighter;
+  margin: 15rpx 0;
+  text-indent: 2em;
+}
+
+.content_page .comment_list .comment_list_ul .comment_list_li .comment_list_item_body .comment_list_item_addtime {
+  font-size: 20rpx;
+  font-weight: lighter;
+}
+
+.content_page .comment_list .comment_list_ul .comment_list_li .comment_list_item_body .hr {
+  margin: 15rpx 0;
+  width: 88%;
+}
+
+.content_page .back_icon {
+  position: fixed;
+  right: 40rpx;
+  bottom: 180rpx;
+  font-size: 50rpx;
+  width: 80rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.content_page .content_footer {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-around;
+  background-color: #fff;
+  padding: 30rpx 0;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.content_page .content_footer .content_comment_form {
+  width: 55%;
+  height: 70rpx;
+  line-height: 70rpx;
+  text-indent: 1em;
+  background-color: #eee;
+  border-radius: 10rpx;
+  font-size: 20rpx;
+  color: #666;
+}
+
+.content_page .content_footer .icon {
+  width: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content_page .content_footer .icon .fa {
+  font-size: 45rpx;
+}
+
+.hr {
+  width: 100%;
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.3);
+  margin: 30rpx 0;
+}

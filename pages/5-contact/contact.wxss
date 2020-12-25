@@ -1,0 +1,90 @@
+.contact_container {
+  padding: 25rpx;
+}
+
+.contact_container .hr {
+  width: 100%;
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.3);
+  margin: 30rpx 0;
+}
+
+.contact_container .contact_title {
+  font-size: 60rpx;
+  font-weight: bold;
+  padding: 30rpx 0;
+}
+
+.contact_container .contact_form .page-section.page-section-gap textarea.contact_textarea {
+  padding: 5%;
+  width: 90%;
+  height: 200rpx;
+  border: 1px solid #000;
+}
+
+.contact_container .contact_form .btn-area button {
+  color: #000 !important;
+}
+
+.contact_container .contact_info .contact_info_list {
+  margin-left: 20rpx;
+}
+
+.contact_container .contact_info .contact_info_list .contact_info_item {
+  font-size: 30rpx;
+}
+
+.contact_container .contact_info .contact_info_list .contact_info_item text.fa {
+  width: 30rpx;
+  height: 30rpx;
+  font-size: 30rpx;
+}
+
+.contact_container .contact_social_media .contact_social_media_title {
+  font-size: 40rpx;
+  margin: 15rpx 0 15rpx 20rpx;
+}
+
+.contact_container .contact_social_media .contact_social_media_list {
+  display: flex;
+  justify-content: start;
+  margin-left: 20rpx;
+}
+
+.contact_container .contact_social_media .contact_social_media_list text {
+  width: 45rpx;
+  height: 45rpx;
+  font-size: 45rpx;
+  color: #000;
+  margin-right: 30rpx;
+}
+
+.contact_container .contact_msg_ul {
+  padding: 0 0 0 30rpx;
+  margin-bottom: 15rpx;
+}
+
+.contact_container .contact_msg_ul .contact_msg_li {
+  padding: 15rpx 0 15rpx 30rpx;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  min-height: 1px;
+}
+
+.contact_container .contact_msg_ul .contact_msg_li .contact_msg_body .contact_msg_head {
+  font-size: 45rpx;
+  font-weight: bold;
+}
+
+.contact_container .contact_msg_ul .contact_msg_li .contact_msg_body .contact_msg_content {
+  font-size: 25rpx;
+  font-weight: lighter;
+  margin: 15rpx 0;
+}
+
+.contact_container .contact_msg_ul .contact_msg_li .contact_msg_body .contact_msg_time {
+  font-size: 28rpx;
+}
+
+.contact_container .contact_msg_ul .contact_msg_li:last-child {
+  border-bottom: none;
+}

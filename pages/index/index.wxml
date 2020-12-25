@@ -1,0 +1,11 @@
+<view>
+  <button bindtap="addData" type="primary">addData</button>
+  <view class="hr"></view>
+  <button bindtap="getData" type="warning">getData</button>
+  <view class="hr"></view>
+  <button bindtap="getCloudFunc" type="danger">AAA</button>
+  <!-- <view class="hr"></view>
+  <button bindtap="getCloudFunc2" type="danger">getByCloudFun</button> -->
+  <view class="hr"></view>
+  <button bindtap="getAggregate" type="danger">聚合查询,模拟管理后台获取数据</button>
+</view>

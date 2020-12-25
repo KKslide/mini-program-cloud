@@ -1,0 +1,29 @@
+<page-meta>
+  <navigation-bar
+    title="{{nbTitle}}"
+    front-color="{{nbFrontColor}}"
+    background-color="{{nbBackgroundColor}}"
+    color-animation-duration="1000"
+    color-animation-timing-func="easeIn"
+  />
+</page-meta>
+<view class="index_page">
+	<!-- 背景图 -->
+	<view class="index_page_background"></view>
+	<!-- 动画文字 -->
+	<view class="rw_wrapper">
+		<view class="rw_sentence">
+			<text class="rw_hello">Hi, KK_(+.-) \n</text>
+			<view class="rw_words">
+				<view class="animation">
+					<text class="type">I`m_Lykang<text>_</text></text>
+					<text class="type">A_Front_End_Enginner<text>_</text></text>
+					<text class="type">Welcome_to_my_Mini_Program<text>_</text></text>
+					<text class="type">I`m_Lykang<text>_</text></text>
+					<text class="type">A_Front_End_Enginner<text>_</text></text>
+					<text class="type">Welcome_to_my_mini_program<text>_</text></text>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>

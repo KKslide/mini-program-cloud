@@ -1,0 +1,150 @@
+@charset "UTF-8";
+page {
+  background-color: #000;
+}
+
+page .index_page {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  /* 背景图 */
+  /* 文字内容 */
+}
+
+page .index_page .index_page_background {
+  width: 100%;
+  height: 100vh;
+  background-color: #000;
+  background-image: url("http://example.kkslide.fun/space.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  position: absolute;
+  z-index: -1;
+}
+
+page .index_page .index_page_hello_content {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  min-height: 100vh;
+  font-size: 70rpx;
+}
+
+page .index_page .index_page_hello_content .index_page_hello_word {
+  padding: 20rpx;
+  font-size: 40rpx;
+}
+
+page .index_page .index_page_hello_content .index_page_hello_word .hello_word_first_line text {
+  color: #FFF;
+  text-shadow: 0 1px 3px #000;
+}
+
+page .index_page .index_page_hello_content .index_page_hello_word .hello_word_switch .hello_word_typing {
+  color: #FFF;
+  text-shadow: 0 1px 3px #000;
+}
+
+page .index_page .rw_wrapper {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  overflow: hidden;
+}
+
+page .index_page .rw_wrapper .rw_sentence {
+  margin-left: 20rpx;
+}
+
+page .index_page .rw_wrapper .rw_sentence .rw_hello {
+  font-size: 50rpx;
+  margin-bottom: 20rpx;
+}
+
+page .index_page .rw_wrapper .rw_sentence text {
+  color: #FFF;
+  text-shadow: 0 1px 3px #000;
+  font-size: 40rpx;
+}
+
+page .index_page .rw_wrapper .rw_sentence .rw_words {
+  display: inline;
+}
+
+page .index_page .rw_wrapper .rw_sentence .rw_words .animation text.type text {
+  animation: cursor 0.8s infinite;
+}
+
+page .index_page .rw_wrapper .rw_sentence .rw_words .animation .type {
+  position: absolute;
+  opacity: 0;
+  overflow: hidden;
+  -webkit-animation: words 24s steps(60) infinite 0s;
+  animation: words 24s steps(60) infinite 0s;
+}
+
+page .index_page .rw_wrapper .rw_sentence .rw_words .animation .type:nth-child(2) {
+  -webkit-animation-delay: 4s;
+  animation-delay: 4s;
+}
+
+page .index_page .rw_wrapper .rw_sentence .rw_words .animation .type:nth-child(3) {
+  -webkit-animation-delay: 8s;
+  animation-delay: 8s;
+}
+
+page .index_page .rw_wrapper .rw_sentence .rw_words .animation .type:nth-child(4) {
+  -webkit-animation-delay: 12s;
+  animation-delay: 12s;
+}
+
+page .index_page .rw_wrapper .rw_sentence .rw_words .animation .type:nth-child(5) {
+  -webkit-animation-delay: 16s;
+  animation-delay: 16s;
+}
+
+page .index_page .rw_wrapper .rw_sentence .rw_words .animation .type:nth-child(6) {
+  -webkit-animation-delay: 20s;
+  animation-delay: 20s;
+}
+
+@keyframes words {
+  0% {
+    opacity: 0;
+    width: 0;
+  }
+  2% {
+    opacity: 1;
+  }
+  14% {
+    opacity: 1;
+    width: 60ch;
+  }
+  15% {
+    opacity: 0;
+  }
+}
+
+@keyframes cursor {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

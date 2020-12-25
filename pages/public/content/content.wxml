@@ -1,0 +1,73 @@
+<import src="../../../utils/wxParse/wxParse.wxml"></import>
+
+<view class="content_page">
+  <image src="http://example.kkslide.fun/upload_ca23bdad143c0c48b25e079880042d88" class="content_img" mode="widthFix">
+  </image>
+  <view class="content_title">THIS IS A TITLE</view>
+  <view class="content_info">
+    <view class="content_info_viewnum"><text class="fa fa-eye"></text>99</view>
+    <text class="content_info_divide"> | </text>
+    <view class="content_info_comment_num"><text class="fa fa-comment-o"></text>99</view>
+    <text class="content_info_divide"> | </text>
+    <view class="content_info_addtime"><text class="fa fa-clock-o"></text>2020-12-31</view>
+    <text class="content_info_divide"> | </text>
+    <view class="content_info_category"><text class="fa fa-tag"></text>Blog</view>
+  </view>
+  <view class="content_article">
+    <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+    <view class="content_video">
+      <video wx:if="{{videoSrc}}" src="{{videoSrc}}" title="video video video" play-btn-position="center"
+        show-snapshot-button="true"></video>
+    </view>
+  </view>
+  <!-- <view class="hr"></view> -->
+  <view class="content_comment">
+    <form class="content_comment_form">
+      <textarea id="comment" focus="{{textAreaFocus}}" bindblur="blurHandler" cols="30" rows="10" placeholder="欢迎留言"></textarea>
+      <view class="btn-area">
+        <button style="margin: 30rpx 0" type="default" size="mini" formType="submit">确定</button>
+      </view>
+    </form>
+  </view>
+  <view class="hr"></view>
+  <view class="comment_list">
+    <view class="comment_list_ul">
+      <view class="comment_list_li">
+        <view class="comment_list_item_body">
+          <image class="userinfo_avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+          <view class="comment_list_item_username">whoever</view>
+          <view class="comment_list_item_msg">MSG MSG MSG...</view>
+          <view class="comment_list_item_addtime">2020-12-31 23:59:59</view>
+          <view class="hr"></view>
+        </view>
+      </view>
+      <view class="comment_list_li">
+        <view class="comment_list_item_body">
+          <image class="userinfo_avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+          <view class="comment_list_item_username">whoever</view>
+          <view class="comment_list_item_msg">MSG MSG MSG...</view>
+          <view class="comment_list_item_addtime">2020-12-31 23:59:59</view>
+          <view class="hr"></view>
+        </view>
+      </view>
+      <view class="comment_list_li">
+        <view class="comment_list_item_body">
+          <image class="userinfo_avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+          <view class="comment_list_item_username">whoever</view>
+          <view class="comment_list_item_msg">MSG MSG MSG...</view>
+          <view class="comment_list_item_addtime">2020-12-31 23:59:59</view>
+          <view class="hr"></view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="back_icon" bindtap="backHandler">
+    <text class="fa fa-reply-all"></text>
+  </view>
+  <view class="content_footer">
+    <view class="content_comment_form" bindtap="commentHandler">发表你的评论...</view>
+    <view class="icon icon_comment" bindtap="commentHandler"><text class="fa fa-edit"></text></view>
+    <view class="icon icon_collect"><text class="fa fa-star-o"></text></view>
+    <view class="icon icon_share"><text class="fa fa-share-square-o"></text></view>
+  </view>
+</view>
