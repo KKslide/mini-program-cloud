@@ -35,7 +35,6 @@ Page({
 		})
 	},
 	getContentList() { // 获取文章列表
-		console.log(this.data.curActiveID);
 		wx.cloud.callFunction({
 			name: "getHandler",
 			data: {
@@ -61,9 +60,15 @@ Page({
 
 	},
 	go2detail: function (e) { // 跳转详情页
-		// let src = e.currentTarget.dataset['param'];
+		let article_chosen = e.currentTarget.dataset['param'];
 		wx.navigateTo({
 			url: '../public/content/content',
+			success: function (res) { // 发送数据到子页面
+				// 通过eventChannel向被打开页面传送数据
+				res.eventChannel.emit('acceptDataFromOpenerPage', {
+					data: article_chosen
+				})
+			},
 			fail: function (err) {
 				console.log(err)
 			}
@@ -75,7 +80,7 @@ Page({
 			curActiveClass: curCategoryData.name,
 			curActiveID: curCategoryData._id
 		});
-		wx.nextTick(_=>{
+		wx.nextTick(_ => {
 			this.getContentList()
 		});
 	},

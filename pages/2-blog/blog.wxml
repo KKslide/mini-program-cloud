@@ -51,7 +51,7 @@
 					<!-- 文章链接 -->
 					<view class="blog_link" data-param="AAA" bindtap="go2detail">阅读全文 >></view>
 				</view>
-				<view class="blog_item" wx:for="{{contentList}}">
+				<view class="blog_item" wx:for="{{contentList}}" wx:key="_id">
 					<!-- 文章标题 -->
 					<view class="blog_title">{{item.title}}</view>
 					<!-- 文章信息 -->
@@ -70,12 +70,11 @@
 					</view>
 					<!-- 文章背景图 -->
 					<view class="blog_img blog_video">
-						<text class="fa fa-play-circle-o"></text>
-						<image src="{{item.poster}}"
-							mode="widthFix" lazy-load="true"></image>
+						<text class="fa fa-play-circle-o" wx:if="{{item.category[0].name=='Vlog'}}"></text>
+						<image src="{{item.poster}}" data-param="{{item}}" bindtap="go2detail" mode="widthFix" lazy-load="true"></image>
 					</view>
 					<!-- 文章链接 -->
-					<view class="blog_link">CHECK >></view>
+					<view class="blog_link" data-param="{{item}}" bindtap="go2detail">CHECK >></view>
 				</view>
 				<view class="blog_item" wx:if="{{noContent}}">
 					<view class="blog_list_empty">

@@ -340,6 +340,10 @@ pre,
   width: 100%;
 }
 
+.content_page .content_article .wxParse-li-text {
+  overflow: hidden;
+}
+
 .content_page .content_comment form.content_comment_form textarea {
   width: 90%;
   height: 100rpx;
