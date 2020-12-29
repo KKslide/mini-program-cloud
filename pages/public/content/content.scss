@@ -94,6 +94,11 @@ pre,
 					padding-left: 140rpx;
 					position: relative;
 
+					.comment_none_tip{
+						font-size: 25rpx;
+						font-weight: lighter;
+					}
+
 					.userinfo_avatar {
 						width: 128rpx;
 						height: 128rpx;
@@ -124,6 +129,13 @@ pre,
 					.hr {
 						margin: 15rpx 0;
 						width: 88%;
+					}
+				}
+			}
+			.comment_list_li:last-child{
+				.comment_list_item_body{
+					.hr{
+						display: none;
 					}
 				}
 			}
@@ -180,8 +192,8 @@ pre,
 
 // 分割线
 .hr {
-	width: 100%;
+	width: 95%;
 	height: 1px;
 	background-color: rgba(0, 0, 0, .3);
-	margin: 30rpx 0;
+	margin: 30rpx auto;
 }

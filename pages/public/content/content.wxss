@@ -362,6 +362,11 @@ pre,
   position: relative;
 }
 
+.content_page .comment_list .comment_list_ul .comment_list_li .comment_list_item_body .comment_none_tip {
+  font-size: 25rpx;
+  font-weight: lighter;
+}
+
 .content_page .comment_list .comment_list_ul .comment_list_li .comment_list_item_body .userinfo_avatar {
   width: 128rpx;
   height: 128rpx;
@@ -392,6 +397,10 @@ pre,
 .content_page .comment_list .comment_list_ul .comment_list_li .comment_list_item_body .hr {
   margin: 15rpx 0;
   width: 88%;
+}
+
+.content_page .comment_list .comment_list_ul .comment_list_li:last-child .comment_list_item_body .hr {
+  display: none;
 }
 
 .content_page .back_icon {
@@ -442,8 +451,8 @@ pre,
 }
 
 .hr {
-  width: 100%;
+  width: 95%;
   height: 1px;
   background-color: rgba(0, 0, 0, 0.3);
-  margin: 30rpx 0;
+  margin: 30rpx auto;
 }

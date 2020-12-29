@@ -1,3 +1,5 @@
+<!-- 引入时间格式化模块 -->
+<wxs module="dateFr" src="../../filter/dateFr.wxs"></wxs>
 <!-- 自定义头部 -->
 <view class='nav bg-black' style='height:{{navH}}px;'>
 	<!-- 搜索框 -->
@@ -60,7 +62,7 @@
 						<text class="blog_info_divide"> | </text>
 						<view class="blog_info_comment_num"><text class="fa fa-comment-o"></text>{{item.comment.length}}</view>
 						<text class="blog_info_divide"> | </text>
-						<view class="blog_info_addtime"><text class="fa fa-clock-o"></text>2020-12-31</view>
+						<view class="blog_info_addtime"><text class="fa fa-clock-o"></text>{{dateFr.dateFormat(item.addtime)}}</view>
 						<text class="blog_info_divide"> | </text>
 						<view class="blog_info_category"><text class="fa fa-tag"></text>{{item.category[0].name}}</view>
 					</view>
@@ -84,6 +86,7 @@
 					</view>
 				</view>
 			</view>
+			<!-- <button bindtap="addView">Add</button> -->
 		</view>
 	</view>
 </scroll-view>

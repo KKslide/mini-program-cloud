@@ -63,6 +63,11 @@ Page({
 		let article_chosen = e.currentTarget.dataset['param'];
 		wx.navigateTo({
 			url: '../public/content/content',
+			events: {
+				updateContentList: data => { // 更新数据
+					this.getContentList(); 
+				}
+			},
 			success: function (res) { // 发送数据到子页面
 				// 通过eventChannel向被打开页面传送数据
 				res.eventChannel.emit('acceptDataFromOpenerPage', {

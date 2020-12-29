@@ -8,4 +8,6 @@
   <button bindtap="getCloudFunc2" type="danger">getByCloudFun</button> -->
   <view class="hr"></view>
   <button bindtap="getAggregate" type="danger">聚合查询,模拟管理后台获取数据</button>
+  <view class="hr"></view>
+  <button bindtap="getThatData" type="primary">获取指定数据</button>  
 </view>
