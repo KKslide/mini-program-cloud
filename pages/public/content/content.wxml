@@ -1,4 +1,3 @@
-<wxs module="dareFr" src="../../../filter/dateFr.wxs"></wxs>
 <!-- 富文本内容转义 -->
 <import src="../../../utils/wxParse/wxParse.wxml"></import>
 <!-- 日期格式化 -->
@@ -28,9 +27,9 @@
 	<!-- 评论框 -->
 	<view class="content_comment">
 		<form class="content_comment_form">
-			<textarea id="comment" focus="{{textAreaFocus}}" bindblur="blurHandler" cols="30" rows="10" placeholder="欢迎留言"></textarea>
+			<textarea id="comment" focus="{{textAreaFocus}}" bindblur="blurHandler" value="{{comment}}" cols="30" rows="10" placeholder="欢迎留言"></textarea>
 			<view class="btn-area">
-				<button style="margin: 30rpx 0" type="default" size="mini" formType="submit" bindtap="commentSubmit">确定</button>
+				<button style="margin: 30rpx 0" type="default" size="mini" formType="submit" bindgetuserinfo="commentSubmit" open-type="getUserInfo">确定</button>
 			</view>
 		</form>
 	</view>
@@ -38,17 +37,17 @@
 	<!-- 评论列表 -->
 	<view class="comment_list">
 		<view class="comment_list_ul">
-			<view class="comment_list_li" wx:for="{{contentData.comment}}" wx:key="_id">
+			<view class="comment_list_li" wx:for="{{content.comment}}" wx:key="_id">
 				<view class="comment_list_item_body">
 					<image class="userinfo_avatar" src="{{item.guest_avatar}}" mode="cover"></image>
-					<view class="comment_list_item_username">{{item.guest_name}}</view>
+					<view class="comment_list_item_username">{{item.guest_id}}</view>
 					<view class="comment_list_item_msg">{{item.com_content}}</view>
-					<view class="comment_list_item_addtime">2020-12-31 23:59:59</view>
+					<view class="comment_list_item_addtime">{{dateFr.dateFormat(item.com_time)}}</view>
 					<view class="hr"></view>
 				</view>
 			</view>
 			<!-- 暂无评论 -->
-			<view class="comment_list_li" wx:if="contentData.comment.length==0">
+			<view class="comment_list_li" wx:if="content.comment.length==0">
 				<view class="comment_list_item_body">
 					<view class="comment_none_tip">暂无评论噢, 来坐沙发吧😎</view>
 				</view>

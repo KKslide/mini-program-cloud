@@ -379,14 +379,14 @@ pre,
 
 .content_page .comment_list .comment_list_ul .comment_list_li .comment_list_item_body .comment_list_item_username {
   font-weight: bold;
-  font-size: 35rpx;
+  font-size: 30rpx;
 }
 
 .content_page .comment_list .comment_list_ul .comment_list_li .comment_list_item_body .comment_list_item_msg {
-  font-size: 20rpx;
+  font-size: 25rpx;
   font-weight: lighter;
   margin: 15rpx 0;
-  text-indent: 2em;
+  text-indent: 1em;
 }
 
 .content_page .comment_list .comment_list_ul .comment_list_li .comment_list_item_body .comment_list_item_addtime {
