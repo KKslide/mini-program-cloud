@@ -4,7 +4,7 @@
 <wxs module="dateFr" src="../../../filter/dateFr.wxs"></wxs>
 
 <view class="content_page">
-	<image src="http://example.kkslide.fun/upload_ca23bdad143c0c48b25e079880042d88" class="content_img" mode="widthFix">
+	<image src="{{content.category[0].banner}}" class="content_img" mode="widthFix">
 	</image>
 	<view class="content_title">{{content.title}}</view>
 	<view class="content_info">

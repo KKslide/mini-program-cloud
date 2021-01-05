@@ -102,7 +102,6 @@ Page({
 		})
 	},
 	onLoad: function (option) {
-		console.log(option);
 		const that = this;
 		if (option.contentID) {
 			wx.cloud.callFunction({
