@@ -60,29 +60,41 @@
 }
 
 .contact_container .contact_msg_ul {
-  padding: 0 0 0 30rpx;
   margin-bottom: 15rpx;
 }
 
 .contact_container .contact_msg_ul .contact_msg_li {
-  padding: 15rpx 0 15rpx 30rpx;
+  padding: 15rpx 0 15rpx 150rpx;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   min-height: 1px;
+  position: relative;
+}
+
+.contact_container .contact_msg_ul .contact_msg_li .contact_msg_body .contact_msg_avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin-top: 15rpx;
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+  top: 0;
 }
 
 .contact_container .contact_msg_ul .contact_msg_li .contact_msg_body .contact_msg_head {
-  font-size: 45rpx;
+  font-size: 35rpx;
   font-weight: bold;
 }
 
 .contact_container .contact_msg_ul .contact_msg_li .contact_msg_body .contact_msg_content {
   font-size: 25rpx;
   font-weight: lighter;
-  margin: 15rpx 0;
+  margin: 13rpx 0;
+  text-indent: 0.5em;
 }
 
 .contact_container .contact_msg_ul .contact_msg_li .contact_msg_body .contact_msg_time {
-  font-size: 28rpx;
+  font-size: 23rpx;
+  font-weight: lighter;
 }
 
 .contact_container .contact_msg_ul .contact_msg_li:last-child {

@@ -18,6 +18,10 @@
   font-family:PingFang-SC-Medium;
   font-size:36rpx;
   letter-spacing:2px;
+  /* 新加的覆盖的 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .nav .back{
   width: 22px;
@@ -37,15 +41,15 @@
   overflow: hidden;
 }
 .INinputheader{
-  width:55%;
+  width:40%;
   height:30px;
   background:rgba(255,255,255,1);
   border-radius:30px;
   font-size: 14px;
-  margin-top:7px;
+  /* margin-top:7px; */
   position: relative; 
   float: left;
-  margin-left:70px;
+  /* margin-left:70px; */
 }
 .INsearchicon{
   position: absolute;

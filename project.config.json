@@ -64,8 +64,14 @@
         "miniprogram": {
             "list": [
                 {
-                    "name": "pages/2-blog/blog",
-                    "pathName": "pages/2-blog/blog",
+                    "name": "pages/public/content/content",
+                    "pathName": "pages/public/content/content",
+                    "query": "contentID=ce805e785fe58dec000be4b94c6c87b3",
+                    "scene": null
+                },
+                {
+                    "name": "pages/1-index/index",
+                    "pathName": "pages/1-index/index",
                     "query": "",
                     "scene": null
                 }

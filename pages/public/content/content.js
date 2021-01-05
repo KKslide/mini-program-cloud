@@ -16,6 +16,17 @@ Page({
 		textAreaFocus: false, // 文本框聚焦
 		comment: "", // 评论内容
 	},
+	onShareAppMessage(res) { // 分享设置
+		// console.log(res);
+		// if (res.from === 'button') {
+		// 	// 来自页面内转发按钮
+		// }
+		return {
+			title: this.data.content.title,
+			path: '/pages/public/content/content?contentID=' + this.data.content._id,
+			imageUrl: this.data.content.poster || ""
+		}
+	},
 	commentHandler(e) { // 点击评论的时候-跳转至输入框
 		this.setData({
 			textAreaFocus: true
@@ -58,7 +69,7 @@ Page({
 			})
 		}
 	},
-	commentPost() {
+	commentPost() { // 评论提交
 		let commentData = {
 			com_content: this.data.comment,
 			com_time: new Date().getTime(),
@@ -91,29 +102,50 @@ Page({
 		})
 	},
 	onLoad: function (option) {
+		console.log(option);
 		const that = this;
-		const eventChannel = this.getOpenerEventChannel();
-		// 接收文章数据
-		eventChannel.on('acceptDataFromOpenerPage', data => {
-			let contentData = data.data;
-			contentData.viewnum += 1; // 阅读数+1
-			// wxparse解析文章内容, 文档: https://github.com/icindy/wxParse
-			WxParse.wxParse('article', 'html', contentData.composition, that, 5);
+		if (option.contentID) {
 			wx.cloud.callFunction({
-				name: "updateHandler",
+				name: "getHandler",
 				data: {
-					collection: "view_num",
-					_id: contentData._id,
-					viewnum: contentData.viewnum
+					collection: "singleContent",
+					contentID: option.contentID
 				}
 			}).then(res => {
-				this.setData({
-					content: contentData
-				})
-				eventChannel.emit("updateContentList", contentData)
+				if (res.result) {
+					WxParse.wxParse('article', 'html', res.result.list[0].composition, that, 5);
+					this.setData({
+						content: res.result.list[0]
+					})
+				} else {}
 			}).catch(err => {
 				console.log(err);
 			})
-		})
+		} else {
+			const eventChannel = this.getOpenerEventChannel();
+			// 接收文章数据
+			eventChannel.on('acceptDataFromOpenerPage', data => {
+				let contentData = data.data;
+				contentData.viewnum += 1; // 阅读数+1
+				// wxparse解析文章内容, 文档: https://github.com/icindy/wxParse
+				WxParse.wxParse('article', 'html', contentData.composition, that, 5);
+				this.setData({
+					content: contentData
+				})
+				wx.cloud.callFunction({
+					name: "updateHandler",
+					data: {
+						collection: "view_num",
+						_id: contentData._id,
+						viewnum: contentData.viewnum
+					}
+				}).then(res => {
+					eventChannel.emit("updateContentList", contentData)
+				}).catch(err => {
+					console.log(err);
+				})
+			})
+		}
+		return
 	},
 })

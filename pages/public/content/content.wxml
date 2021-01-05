@@ -21,15 +21,18 @@
 	<view class="content_article">
 		<template is="wxParse" data="{{wxParseData:article.nodes}}" />
 		<view class="content_video" wx:if="{{content.category[0].name=='Vlog'}}">
-			<video src="{{content.video_src}}" title="{{content.title}}" play-btn-position="center" show-snapshot-button="true"></video>
+			<video src="{{content.video_src}}" title="{{content.title}}" play-btn-position="center"
+				show-snapshot-button="true"></video>
 		</view>
 	</view>
 	<!-- 评论框 -->
 	<view class="content_comment">
 		<form class="content_comment_form">
-			<textarea id="comment" focus="{{textAreaFocus}}" bindblur="blurHandler" value="{{comment}}" cols="30" rows="10" placeholder="欢迎留言"></textarea>
+			<textarea id="comment" focus="{{textAreaFocus}}" bindblur="blurHandler" value="{{comment}}" cols="30"
+				rows="10" placeholder="欢迎留言"></textarea>
 			<view class="btn-area">
-				<button style="margin: 30rpx 0" type="default" size="mini" formType="submit" bindgetuserinfo="commentSubmit" open-type="getUserInfo">确定</button>
+				<button style="margin: 30rpx 0" type="default" size="mini" formType="submit"
+					bindgetuserinfo="commentSubmit" open-type="getUserInfo">确定</button>
 			</view>
 		</form>
 	</view>
@@ -47,9 +50,15 @@
 				</view>
 			</view>
 			<!-- 暂无评论 -->
-			<view class="comment_list_li" wx:if="content.comment.length==0">
+			<view class="comment_list_li" wx:if="{{content.comment.length==0}}">
 				<view class="comment_list_item_body">
 					<view class="comment_none_tip">暂无评论噢, 来坐沙发吧😎</view>
+				</view>
+			</view>
+			<!-- 评论加载完毕 -->
+			<view class="comment_list_li" wx:else>
+				<view class="comment_list_item_body">
+					<view class="comment_none_tip">以上是全部评论了😎</view>
 				</view>
 			</view>
 		</view>
@@ -63,6 +72,10 @@
 		<view class="content_comment_form" bindtap="commentHandler">发表你的评论...</view>
 		<view class="icon icon_comment" bindtap="commentHandler"><text class="fa fa-edit"></text></view>
 		<view class="icon icon_collect"><text class="fa fa-star-o"></text></view>
-		<view class="icon icon_share"><text class="fa fa-share-square-o"></text></view>
+		<view class="icon icon_share">
+			<button open-type="share" class="fa">
+				<text class="fa fa-share-square-o"></text>
+			</button>
+		</view>
 	</view>
 </view>

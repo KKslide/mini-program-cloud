@@ -1,62 +1,59 @@
+<!-- 日期格式化 -->
+<wxs module="dateFr" src="../../filter/dateFr.wxs"></wxs>
+
 <view class="contact_container">
-  <!-- 标题 -->
-  <view class="contact_title t_title">Contact Me</view>
-  <!-- form表单 -->
-  <view class="contact_form">
-    <form catchsubmit="formSubmit" catchreset="formReset">
-      <view class="page-section page-section-gap">
-        <textarea class="contact_textarea" name="massage_content" cols="30" rows="10"></textarea>
-      </view>
-      <view class="btn-area">
-        <button style="margin: 30rpx 0" type="default" size="mini" formType="submit">确定</button>
-      </view>
-    </form>
-  </view>
-  <!-- 我的信息列表 -->
-  <view class="contact_info">
-    <view class="contact_info_list">
-      <view class="contact_info_item phone">
-        <text class="fa fa-phone"></text>
-        18888888888
-      </view>
-      <view class="contact_info_item email">
-        <text class="fa fa-at"></text>
-        888888888@888.com
-      </view>
-      <view class="contact_info_item addr">
-        <text class="fa fa-map-marker"></text>
-        somewhere you don`t know
-      </view>
-    </view>
-  </view>
-  <!-- 社交媒体 -->
-  <view class="contact_social_media">
-    <view class="contact_social_media_title">Follow me on social media</view>
-    <view class="contact_social_media_list">
-      <text class="fa fa-github"></text>
-      <text class="fa fa-facebook"></text>
-      <text class="fa fa-twitter"></text>
-      <text class="fa fa-instagram"></text>
-      <text class="fa fa-weibo"></text>
-    </view>
-  </view>
-  <view class="hr"></view>
-  <!-- 留言列表 -->
-  <view class="contact_msg_ul">
-    <view class="contact_msg_li" wx:for="{{dataList}}" wx:key="key">
-      <view class="contact_msg_body">
-        <view class="contact_msg_head">{{item.viewer}}</view>
-        <view class="contact_msg_content">{{item.message}}</view>
-        <view class="contact_msg_time">{{item.addtime}}</view>
-      </view>
-    </view>
-    <view class="contact_msg_li" wx:if="{{false}}">
-      <view class="contact_msg_body">
-        <view class="contact_msg_head">Name</view>
-        <view class="contact_msg_content">whatever content ...</view>
-        <view class="contact_msg_time">2020-12-08 17:20</view>
-      </view>
-    </view>
-    <view class="contact_msg_li">there is no more comments</view>
-  </view>
+	<!-- 标题 -->
+	<view class="contact_title t_title">Contact Me</view>
+	<!-- form表单 -->
+	<view class="contact_form">
+		<form catchsubmit="formSubmit" catchreset="formReset">
+			<view class="page-section page-section-gap">
+				<textarea class="contact_textarea" name="massage_content" bindblur="blurHandler" value="{{message}}" cols="30" rows="10"></textarea>
+			</view>
+			<view class="btn-area">
+				<button style="margin: 30rpx 0" type="default" size="mini" formType="submit" open-type="getUserInfo" bindgetuserinfo="msgSubmit">确定</button>
+			</view>
+		</form>
+	</view>
+	<!-- 我的信息列表 -->
+	<view class="contact_info">
+		<view class="contact_info_list">
+			<view class="contact_info_item phone">
+				<text class="fa fa-phone"></text>
+				18888888888
+			</view>
+			<view class="contact_info_item email">
+				<text class="fa fa-at"></text>
+				888888888@888.com
+			</view>
+			<view class="contact_info_item addr">
+				<text class="fa fa-map-marker"></text>
+				somewhere you don`t know
+			</view>
+		</view>
+	</view>
+	<!-- 社交媒体 -->
+	<view class="contact_social_media">
+		<view class="contact_social_media_title">Follow me on social media</view>
+		<view class="contact_social_media_list">
+			<text class="fa fa-github"></text>
+			<text class="fa fa-facebook"></text>
+			<text class="fa fa-twitter"></text>
+			<text class="fa fa-instagram"></text>
+			<text class="fa fa-weibo"></text>
+		</view>
+	</view>
+	<view class="hr"></view>
+	<!-- 留言列表 -->
+	<view class="contact_msg_ul">
+		<view class="contact_msg_li" wx:for="{{dataList}}" wx:key="key">
+			<view class="contact_msg_body">
+				<image class="contact_msg_avatar" src="{{item.guest_avatar}}" mode="cover"></image>
+				<view class="contact_msg_head">{{item.guest_name}}</view>
+				<view class="contact_msg_content">{{item.message}}</view>
+				<view class="contact_msg_time">{{dateFr.dateFormat(item.addtime)}}</view>
+			</view>
+		</view>
+		<view class="contact_msg_li">there is no more comments</view>
+	</view>
 </view>

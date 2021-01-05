@@ -7,6 +7,5 @@ Page({
     hasUserInfo: false,
   },
   onLoad: function () {
-    console.log("loaded!!!")
   }
 })

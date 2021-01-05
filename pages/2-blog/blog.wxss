@@ -45,6 +45,7 @@
   top: 0;
   right: 0;
   text-align: center;
+  opacity: 0.7;
 }
 
 .blog_cate .blog_cate_list_more .fa {
