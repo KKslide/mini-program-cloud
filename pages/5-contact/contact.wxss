@@ -15,11 +15,22 @@
   padding: 30rpx 0;
 }
 
+.contact_container .contact_form .page-section.page-section-gap {
+  position: relative;
+}
+
 .contact_container .contact_form .page-section.page-section-gap textarea.contact_textarea {
   padding: 5%;
   width: 90%;
   height: 200rpx;
   border: 1px solid #000;
+}
+
+.contact_container .contact_form .page-section.page-section-gap .contact_msg_length {
+  position: absolute;
+  right: 15rpx;
+  bottom: 10rpx;
+  color: #666;
 }
 
 .contact_container .contact_form .btn-area button {
@@ -28,16 +39,21 @@
 
 .contact_container .contact_info .contact_info_list {
   margin-left: 20rpx;
+  font-size: 30rpx;
 }
 
 .contact_container .contact_info .contact_info_list .contact_info_item {
-  font-size: 30rpx;
+  margin: 10rpx 0;
 }
 
 .contact_container .contact_info .contact_info_list .contact_info_item text.fa {
   width: 30rpx;
   height: 30rpx;
   font-size: 30rpx;
+}
+
+.contact_container .contact_info .contact_info_list .contact_info_item text:nth-child(2) {
+  color: #07578d;
 }
 
 .contact_container .contact_social_media .contact_social_media_title {

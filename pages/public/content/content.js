@@ -15,6 +15,7 @@ Page({
 		// videoSrc: "http://example.kkslide.fun/trip-in-guilin_v2.mp4", // 文章视频链接
 		textAreaFocus: false, // 文本框聚焦
 		comment: "", // 评论内容
+		isOverShare:true
 	},
 	onShareAppMessage(res) { // 分享设置
 		// console.log(res);
@@ -36,10 +37,14 @@ Page({
 			selector: "#comment"
 		})
 	},
+	inputHandler(e){ // 评论框输入监听
+		this.setData({
+			comment: e.detail.value
+		})
+	},
 	blurHandler(e) { // 失去焦点的时候
 		this.setData({
-			textAreaFocus: false,
-			comment: e.detail.value
+			textAreaFocus: false
 		})
 	},
 	backHandler() { // 返回上一页
@@ -48,30 +53,42 @@ Page({
 		})
 	},
 	commentSubmit(e) {
-		if (app.globalData.userInfo) {
-			this.setData({
-				userInfo: app.globalData.userInfo,
+		if (this.data.comment.trim() == "" || this.data.comment.length > 140) {
+			wx.showToast({
+				title: '请检查评论内容',
+				icon: 'error',
+				mask: true,
+				duration: 1500
 			});
-			this.commentPost()
 		} else {
-			wx.getUserInfo({
-				success: res => {
-					console.log("用户数据获取成功：", res);
-					app.globalData.userInfo = res.userInfo;
-					this.setData({
-						userInfo: res.userInfo,
-					});
-					this.commentPost()
-				},
-				fail: err => {
-					console.log(err);
-				}
-			})
+			if (app.globalData.userInfo) {
+				this.setData({
+					userInfo: app.globalData.userInfo,
+				});
+				this.commentPost()
+			} else {
+				wx.getUserInfo({
+					success: res => {
+						console.log("用户数据获取成功：", res);
+						app.globalData.userInfo = res.userInfo;
+						this.setData({
+							userInfo: res.userInfo,
+						});
+						this.commentPost()
+					},
+					fail: err => {
+						console.log(err);
+					}
+				})
+			}
 		}
 	},
 	commentPost() { // 评论提交
+		wx.showLoading({
+			title: 'loading',
+		});
 		let commentData = {
-			com_content: this.data.comment,
+			com_content: this.data.comment.trim(),
 			com_time: new Date().getTime(),
 			content_id: this.data.content._id,
 			guest_avatar: this.data.userInfo.avatarUrl,
@@ -99,12 +116,17 @@ Page({
 			}
 		}).catch(err => {
 			console.log(err);
+		}).finally(_ => {
+			wx.hideLoading()
 		})
 	},
 	onLoad: function (option) {
-		console.log(option);
+		wx.showLoading({
+			title: "loading...",
+			mask: true
+		});
 		const that = this;
-		if (option.contentID) {
+		if (option.contentID) { // 如果是分享也进入
 			wx.cloud.callFunction({
 				name: "getHandler",
 				data: {
@@ -120,8 +142,10 @@ Page({
 				} else {}
 			}).catch(err => {
 				console.log(err);
+			}).finally(_ => {
+				wx.hideLoading()
 			})
-		} else {
+		} else { // 如果是列表页点击进入
 			const eventChannel = this.getOpenerEventChannel();
 			// 接收文章数据
 			eventChannel.on('acceptDataFromOpenerPage', data => {
@@ -143,6 +167,8 @@ Page({
 					eventChannel.emit("updateContentList", contentData)
 				}).catch(err => {
 					console.log(err);
+				}).finally(_ => {
+					wx.hideLoading()
 				})
 			})
 		}

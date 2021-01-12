@@ -28,8 +28,9 @@
 	<!-- 评论框 -->
 	<view class="content_comment">
 		<form class="content_comment_form">
-			<textarea id="comment" focus="{{textAreaFocus}}" bindblur="blurHandler" value="{{comment}}" cols="30"
-				rows="10" placeholder="欢迎留言"></textarea>
+			<textarea id="comment" focus="{{textAreaFocus}}" maxlength="140" bindinput="inputHandler" bindblur="blurHandler" value="{{comment}}" cols="30" rows="10" placeholder="欢迎留言">
+			<text>{{comment.length}}/140</text>
+		</textarea>
 			<view class="btn-area">
 				<button style="margin: 30rpx 0" type="default" size="mini" formType="submit"
 					bindgetuserinfo="commentSubmit" open-type="getUserInfo">确定</button>

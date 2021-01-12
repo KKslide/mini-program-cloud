@@ -1,26 +1,50 @@
-.abount_container{
-  padding: 25rpx;
-  .about_title{
-    font-size: 60rpx;
-    font-weight: bold;
-    padding:30rpx 0;
-  }
-  .about_intro{
-    margin-bottom: 20rpx;
-    .about_intro_sub_title{
-      font-size: 40rpx;
-      font-weight: bold;
-    }
-    .about_intro_content{
-      font-size: 30rpx;
-      font-weight: lighter;
-      padding: 15rpx;
-    }
-    .about_avatar{
-      width: 100%;
-    }
-  }
-  .about_intro.avatar{
-    padding: 15rpx;
-  }
+.abount_container {
+	padding: 25rpx;
+
+	.about_title {
+		font-size: 60rpx;
+		font-weight: bold;
+		padding: 30rpx 0;
+	}
+
+	.about_intro {
+		margin-bottom: 20rpx;
+
+		.about_intro_sub_title {
+			font-size: 40rpx;
+			font-weight: bold;
+		}
+
+		.about_intro_sub_title.download_btn {
+			font-size: 30rpx;
+			font-weight: bold;
+			border: 1px solid #666;
+			border-radius: 10rpx;
+			padding:8rpx 5rpx;
+			text-align: center;
+		}
+
+		.about_intro_content {
+			font-size: 30rpx;
+			font-weight: lighter;
+			padding: 15rpx;
+
+		}
+
+		.about_intro_content.skills {
+			display: flex;
+			justify-content: space-around;
+			.skill_box {
+				width: 45%;
+			}
+		}
+
+		.about_avatar {
+			width: 100%;
+		}
+	}
+
+	.about_intro.avatar {
+		padding: 15rpx;
+	}
 }

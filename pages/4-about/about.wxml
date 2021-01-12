@@ -1,29 +1,109 @@
 <view class="abount_container">
-  <!-- 标题 -->
-  <view class="about_title t_title" wx:if="{{false}}">About</view>
-  <!-- 前端 -->
-  <view class="about_intro front_end">
-    <view class="about_intro_sub_title">Front-End</view>
-    <view class="about_intro_content">
-      I`m A Three-year working experience front end engineer, I started to get into this industrial in 2013. So then we had a course - 'HTML & CSS Web Design' during college which impressed me, that was so coool and so amazing!!! It turned out I was a visual effects lover. So I tried hard to teach myself html and css and catch up with JavaScript. I want to be a UI designer and front end engineer. That`s the motivation that keeps me moving on.
-    </view>
-  </view>
-  <!-- 兴趣爱好 -->
-  <view class="about_intro hobby">
-    <view class="about_intro_sub_title">My Life</view>
-    <view class="about_intro_content">
-      Besides Coding, Basketball and RollingSkate fullfill my spare time. I dreamed of being a big Star when I was a kid 🤣but I stop growing taller when I was 18. So I started to try something else to see if I could get a little bit taller, and I bought myself a pair of skating shoes, and that changed my whole life..
-    </view>
-  </view>
-  <!-- 下一步 -->
-  <view class="about_intro hobby">
-    <view class="about_intro_sub_title">Next Movement</view>
-    <view class="about_intro_content">
-      <text>Keep trying and learing new things \n Keep challenge my limits and striving for excellence</text>
-    </view>
-  </view>
-  <!-- 头像 -->
-  <view class="about_intro avatar">
-    <image class="about_avatar" src="http://kkslide.fun/img/profil.9c2d3698.jpg" mode="widthFix" lazy-load="true"></image>
-  </view>
+	<!-- 标题 -->
+	<view class="about_title t_title" wx:if="{{false}}">About</view>
+	<!-- 前端 -->
+	<view class="about_intro front_end">
+		<view class="about_intro_sub_title">Front-End</view>
+		<view class="about_intro_content">
+			I`m A Three-year working experience front end engineer, I started to get into this industrial in 2013. So
+			then we had a course - 'HTML & CSS Web Design' during college which impressed me, that was so coool and so
+			amazing!!! It turned out I was a visual effects lover. So I tried hard to teach myself html and css and
+			catch up with JavaScript. I want to be a UI designer and front end engineer. That`s the motivation that
+			keeps me moving on.
+		</view>
+	</view>
+	<!-- 兴趣爱好 -->
+	<view class="about_intro hobby">
+		<view class="about_intro_sub_title">My Life</view>
+		<view class="about_intro_content">
+			Besides Coding, Basketball and RollingSkate fullfill my spare time. I dreamed of being a big Star when I was
+			a kid 🤣but I stop growing taller when I was 18. So I started to try something else to see if I could get a
+			little bit taller, and I bought myself a pair of skating shoes, and that changed my whole life..
+		</view>
+	</view>
+	<!-- 个人技能树 -->
+	<view class="about_intro skills">
+		<view class="about_intro_sub_title">My Skills</view>
+		<view class="about_intro_content skills">
+			<view class="skill_coding skill_box">
+				<view class="skill_coding_lang">
+					<text>JavaScript \n</text>
+				</view>
+				<view class="skill_coding_lang">
+					<text>CSS \n</text>
+				</view>
+				<view class="skill_coding_lang">
+					<text>jQuery \n</text>
+				</view>
+				<view class="skill_coding_lang">
+					<text>NodeJs \n</text>
+				</view>
+				<view class="skill_coding_lang">
+					<text>Vue \n</text>
+				</view>
+				<view class="skill_coding_lang">
+					<text>MySQL \n</text>
+				</view>
+				<view class="skill_coding_lang">
+					<text>PHP \n</text>
+				</view>
+				<view class="skill_coding_lang">
+					<text>Java \n</text>
+				</view>
+				<view class="skill_coding_lang">
+					<text>Linux \n</text>
+				</view>
+			</view>
+			<view class="skill_other skill_box">
+				<view class="skill_coding_other">
+					<text>Adobe Ps</text>
+				</view>
+				<view class="skill_coding_other">
+					<text>Adobe Pr</text>
+				</view>
+				<view class="skill_coding_other">
+					<text>Adobe AE</text>
+				</view>
+				<view class="skill_coding_other">
+					<text>Adobe AI</text>
+				</view>
+				<view class="skill_coding_other">
+					<text>Adobe Au</text>
+				</view>
+				<view class="skill_coding_other">
+					<text>Rolling Skate</text>
+				</view>
+				<view class="skill_coding_other">
+					<text>Basketball</text>
+				</view>
+			</view>
+		</view>
+	</view>
+	<!-- 下一步 -->
+	<view class="about_intro next">
+		<view class="about_intro_sub_title">Next Movement</view>
+		<view class="about_intro_content">
+			<text>Keep trying and learing new things \n Keep challenge my limits and striving for excellence</text>
+		</view>
+	</view>
+	<!-- 简历下载 -->
+	<view class="about_intro next">
+		<view class="about_intro_sub_title download_btn">
+			<text class="fa fa-download"></text>
+			Download my resume
+		</view>
+		<view class="about_intro_content">
+		</view>
+	</view>
+	<!-- 头像 -->
+	<view class="about_intro next">
+		<view class="about_intro_sub_title">Me In 50 Years Later</view>
+		<view class="about_intro_content">
+			<image class="about_avatar" src="http://kkslide.fun/img/profil.9c2d3698.jpg" mode="widthFix" lazy-load="true"></image>
+		</view>
+	</view>
+	<!-- 头像 -->
+	<!-- <view class="about_intro avatar">
+		<image class="about_avatar" src="http://kkslide.fun/img/profil.9c2d3698.jpg" mode="widthFix" lazy-load="true"></image>
+	</view> -->
 </view>

@@ -17,10 +17,28 @@
   font-weight: bold;
 }
 
+.abount_container .about_intro .about_intro_sub_title.download_btn {
+  font-size: 30rpx;
+  font-weight: bold;
+  border: 1px solid #666;
+  border-radius: 10rpx;
+  padding: 8rpx 5rpx;
+  text-align: center;
+}
+
 .abount_container .about_intro .about_intro_content {
   font-size: 30rpx;
   font-weight: lighter;
   padding: 15rpx;
+}
+
+.abount_container .about_intro .about_intro_content.skills {
+  display: flex;
+  justify-content: space-around;
+}
+
+.abount_container .about_intro .about_intro_content.skills .skill_box {
+  width: 45%;
 }
 
 .abount_container .about_intro .about_avatar {
