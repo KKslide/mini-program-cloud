@@ -47,6 +47,11 @@ Page({
 			textAreaFocus: false
 		})
 	},
+	likeHandler(){ // 收藏按钮点击事件
+		wx.showToast({
+		  title: '哎呀还没写- -',
+		})
+	},
 	backHandler() { // 返回上一页
 		wx.navigateBack({
 			delta: 1

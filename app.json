@@ -1,6 +1,5 @@
 {
 	"pages": [
-		"pages/index/index",
 		"pages/1-index/index",
 		"pages/2-blog/blog",
 		"pages/3-component/component",
@@ -18,22 +17,31 @@
 	"tabBar": {
 		"list": [{
 				"pagePath": "pages/1-index/index",
-				"text": "Kang"
+				"text": "Kang",
+				"iconPath":"./static/imgs/home_icon.png",
+				"selectedIconPath":"./static/imgs/home_selected.png"
 			},
 			{
 				"pagePath": "pages/2-blog/blog",
-				"text": "Blog"
+				"text": "Blog",
+				"iconPath":"./static/imgs/blog_icon.png",
+				"selectedIconPath":"./static/imgs/blog_selected.png"
 			},
 			{
 				"pagePath": "pages/4-about/about",
-				"text": "About"
+				"text": "About",
+				"iconPath":"./static/imgs/about_icon.png",
+				"selectedIconPath":"./static/imgs/about_selected.png"
 			},
 			{
 				"pagePath": "pages/5-contact/contact",
-				"text": "Contact"
+				"text": "Contact",
+				"iconPath":"./static/imgs/contact_icon.png",
+				"selectedIconPath":"./static/imgs/contact_selected.png"
 			}
 		],
-		"borderStyle": "black"
+		"borderStyle": "black",
+		"selectedColor": "#0b6fbc"
 	},
 	"style": "v2",
 	"sitemapLocation": "sitemap.json"

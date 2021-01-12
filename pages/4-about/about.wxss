@@ -41,6 +41,52 @@
   width: 45%;
 }
 
+.abount_container .about_intro .about_intro_content.skills .skill_box .skill_coding_lang,
+.abount_container .about_intro .about_intro_content.skills .skill_box .skill_coding_other {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.abount_container .about_intro .about_intro_content.skills .skill_box .skill_coding_lang text,
+.abount_container .about_intro .about_intro_content.skills .skill_box .skill_coding_other text {
+  width: 65%;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.abount_container .about_intro .about_intro_content.skills .skill_box .skill_coding_lang .skill_bar,
+.abount_container .about_intro .about_intro_content.skills .skill_box .skill_coding_other .skill_bar {
+  height: 0.4em;
+  width: 100%;
+  margin: 0 40rpx 0 10rpx;
+  border: 1px solid #081d29;
+  border-radius: 5rpx;
+  position: relative;
+}
+
+.abount_container .about_intro .about_intro_content.skills .skill_box .skill_coding_lang .skill_bar .skill_bar_fill,
+.abount_container .about_intro .about_intro_content.skills .skill_box .skill_coding_other .skill_bar .skill_bar_fill {
+  background-color: #081d29;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.abount_container .about_intro .about_intro_content.skills .skill_box .skill_coding_lang .skill_bar::after,
+.abount_container .about_intro .about_intro_content.skills .skill_box .skill_coding_other .skill_bar::after {
+  content: attr(data-emoji);
+  position: absolute;
+  right: -25px;
+  top: 50%;
+  transform: translateY(-60%);
+}
+
+.abount_container .about_intro .about_intro_content.skills .skill_box .skill_coding_other .skill_bar {
+  width: 60% !important;
+}
+
 .abount_container .about_intro .about_avatar {
   width: 100%;
 }

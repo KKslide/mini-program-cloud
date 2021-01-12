@@ -11,6 +11,7 @@ Page({
 		curActiveClass: 'HOT',
 		curActiveID: null, // 当前navigation的ID号
 		noContent: false, // 没有当前栏内容flag
+		isOverShare:false,
 	},
 	getCategoryList(callback) { // 获取分类
 		let db = wx.cloud.database().collection("category");

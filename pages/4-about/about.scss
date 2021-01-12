@@ -20,7 +20,7 @@
 			font-weight: bold;
 			border: 1px solid #666;
 			border-radius: 10rpx;
-			padding:8rpx 5rpx;
+			padding: 8rpx 5rpx;
 			text-align: center;
 		}
 
@@ -34,8 +34,53 @@
 		.about_intro_content.skills {
 			display: flex;
 			justify-content: space-around;
+
 			.skill_box {
 				width: 45%;
+
+				.skill_coding_lang,
+				.skill_coding_other {
+					display: flex;
+					justify-content: flex-start;
+					align-items: center;
+
+					text {
+						width: 65%;
+						overflow: hidden;
+						white-space: nowrap;
+					}
+
+					.skill_bar {
+						height: 0.4em;
+						width: 100%;
+						margin: 0 40rpx 0 10rpx;
+						border: 1px solid rgb(8, 29, 41);
+						border-radius: 5rpx;
+						position: relative;
+
+						.skill_bar_fill {
+							background-color: rgb(8, 29, 41);
+							height: 100%;
+							position: absolute;
+							top: 0;
+							left: 0;
+						}
+					}
+
+					.skill_bar::after {
+						content: attr(data-emoji);
+						position: absolute;
+						right: -25px;
+						top: 50%;
+						transform: translateY(-60%);
+					}
+				}
+
+				.skill_coding_other{
+					.skill_bar{
+						width: 60% !important;
+					}
+				}
 			}
 		}
 

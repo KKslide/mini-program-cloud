@@ -5,6 +5,7 @@ Page({
     motto: 'fucking test',
     userInfo: {},
     hasUserInfo: false,
+    isOverShare:false
   },
   onLoad: function () {
     this.setData({
@@ -14,4 +15,5 @@ Page({
       navH: app.globalData.navHeight // 自定义头部方法
     });
   },
+  onShareAppMessage(){}
 })

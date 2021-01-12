@@ -72,7 +72,7 @@
 	<view class="content_footer">
 		<view class="content_comment_form" bindtap="commentHandler">发表你的评论...</view>
 		<view class="icon icon_comment" bindtap="commentHandler"><text class="fa fa-edit"></text></view>
-		<view class="icon icon_collect"><text class="fa fa-star-o"></text></view>
+		<view class="icon icon_collect" bindtap="likeHandler"><text class="fa fa-star-o"></text></view>
 		<view class="icon icon_share">
 			<button open-type="share" class="fa">
 				<text class="fa fa-share-square-o"></text>

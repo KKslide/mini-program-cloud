@@ -83,5 +83,6 @@ Page({
 	},
 	onLoad() {
 		this.getMessageList()
-	}
+	},
+	onShareAppMessage(){}
 })

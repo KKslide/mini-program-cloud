@@ -5,7 +5,9 @@ Page({
     motto: 'fucking test',
     userInfo: {},
     hasUserInfo: false,
+    isOverShare:true
   },
   onLoad: function () {
-  }
+  },
+  onShareAppMessage(){}
 })
