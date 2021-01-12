@@ -18,7 +18,7 @@
 	"tabBar": {
 		"list": [{
 				"pagePath": "pages/1-index/index",
-				"text": "Home"
+				"text": "Kang"
 			},
 			{
 				"pagePath": "pages/2-blog/blog",

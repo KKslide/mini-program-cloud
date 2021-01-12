@@ -5,7 +5,7 @@
         "ignore": []
     },
     "setting": {
-        "urlCheck": true,
+        "urlCheck": false,
         "es6": true,
         "enhance": false,
         "postcss": true,
@@ -73,6 +73,23 @@
                     "name": "pages/1-index/index",
                     "pathName": "pages/1-index/index",
                     "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "pages/2-blog/blog",
+                    "pathName": "pages/2-blog/blog",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "pages/5-contact/contact",
+                    "pathName": "pages/5-contact/contact",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "pages/4-about/about",
+                    "pathName": "pages/4-about/about",
                     "scene": null
                 }
             ]

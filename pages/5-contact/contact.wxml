@@ -6,9 +6,10 @@
 	<view class="contact_title t_title">Contact Me</view>
 	<!-- form表单 -->
 	<view class="contact_form">
-		<form catchsubmit="formSubmit" catchreset="formReset">
+		<form catchreset="formReset">
 			<view class="page-section page-section-gap">
-				<textarea class="contact_textarea" name="massage_content" bindblur="blurHandler" value="{{message}}" cols="30" rows="10"></textarea>
+				<textarea class="contact_textarea" placeholder="Say something ~" name="massage_content" bindinput="inputHandler" value="{{message}}" maxlength="200" cols="30" rows="10"></textarea>
+				<text class="contact_msg_length">{{message.length}}/200</text>
 			</view>
 			<view class="btn-area">
 				<button style="margin: 30rpx 0" type="default" size="mini" formType="submit" open-type="getUserInfo" bindgetuserinfo="msgSubmit">确定</button>
@@ -20,15 +21,15 @@
 		<view class="contact_info_list">
 			<view class="contact_info_item phone">
 				<text class="fa fa-phone"></text>
-				18888888888
+				<text>13143352449</text> 👈call me
 			</view>
 			<view class="contact_info_item email">
 				<text class="fa fa-at"></text>
-				888888888@888.com
+				rollercompanion@163.com
 			</view>
 			<view class="contact_info_item addr">
 				<text class="fa fa-map-marker"></text>
-				somewhere you don`t know
+				<text>GuangZhou </text>👈click to see
 			</view>
 		</view>
 	</view>

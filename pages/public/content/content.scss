@@ -75,6 +75,13 @@ pre,
 				height: 100rpx;
 				border: 1px solid #ccc;
 				padding: 3%;
+				position: relative;
+				text{
+					position: absolute;
+					right: 15rpx;
+					bottom: 10rpx;
+					color:#666;
+				}
 			}
 
 			.btn-area {

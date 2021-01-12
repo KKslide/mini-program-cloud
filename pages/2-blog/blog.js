@@ -35,6 +35,10 @@ Page({
 		})
 	},
 	getContentList() { // 获取文章列表
+		wx.showLoading({
+			title: 'loading...',
+			mask: true
+		});
 		wx.cloud.callFunction({
 			name: "getHandler",
 			data: {
@@ -54,6 +58,7 @@ Page({
 					noContent: false
 				})
 			}
+			wx.hideLoading()
 		}).catch(err => {
 			console.log(err);
 		})
@@ -65,7 +70,7 @@ Page({
 			url: '../public/content/content',
 			events: {
 				updateContentList: data => { // 更新数据
-					this.getContentList(); 
+					this.getContentList();
 				}
 			},
 			success: function (res) { // 发送数据到子页面

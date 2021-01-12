@@ -349,6 +349,14 @@ pre,
   height: 100rpx;
   border: 1px solid #ccc;
   padding: 3%;
+  position: relative;
+}
+
+.content_page .content_comment form.content_comment_form textarea text {
+  position: absolute;
+  right: 15rpx;
+  bottom: 10rpx;
+  color: #666;
 }
 
 .content_page .content_comment form.content_comment_form .btn-area button {

@@ -19,11 +19,18 @@
     // form表单
     .contact_form {
         .page-section.page-section-gap {
+            position: relative;
             textarea.contact_textarea {
                 padding: 5%;
                 width: 90%;
                 height: 200rpx;
                 border: 1px solid #000;
+            }
+            .contact_msg_length{
+                position: absolute;
+                right:15rpx;
+                bottom: 10rpx;
+                color:#666;
             }
         }
 
@@ -38,15 +45,19 @@
     .contact_info {
         .contact_info_list {
             margin-left: 20rpx;
+            font-size:30rpx;
 
             .contact_info_item {
+                margin: 10rpx 0;
                 text.fa {
                     width: 30rpx;
                     height: 30rpx;
                     font-size: 30rpx;
                 }
+                text:nth-child(2){
+                    color: rgb(7, 87, 141);
+                }
 
-                font-size:30rpx;
             }
         }
     }
