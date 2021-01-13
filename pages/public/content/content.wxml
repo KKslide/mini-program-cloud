@@ -20,7 +20,7 @@
 	</view>
 	<view class="content_article">
 		<template is="wxParse" data="{{wxParseData:article.nodes}}" />
-		<view class="content_video" wx:if="{{content.category[0].name=='Vlog'}}">
+		<view class="content_video" wx:if="{{content.video_src!=''}}">
 			<video src="{{content.video_src}}" title="{{content.title}}" play-btn-position="center"
 				show-snapshot-button="true"></video>
 		</view>

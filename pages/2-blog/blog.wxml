@@ -72,7 +72,7 @@
 					</view>
 					<!-- 文章背景图 -->
 					<view class="blog_img blog_video">
-						<text class="fa fa-play-circle-o" wx:if="{{item.category[0].name=='Vlog'}}"></text>
+						<text class="fa fa-play-circle-o" wx:if="{{item.video_src!=''}}"></text>
 						<image src="{{item.poster}}" data-param="{{item}}" bindtap="go2detail" mode="widthFix" lazy-load="true"></image>
 					</view>
 					<!-- 文章链接 -->

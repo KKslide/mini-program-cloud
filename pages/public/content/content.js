@@ -131,7 +131,7 @@ Page({
 			mask: true
 		});
 		const that = this;
-		if (option.contentID) { // 如果是分享也进入
+		if (option.contentID) { // 如果是分享页进入(今晚修改viewnum++)
 			wx.cloud.callFunction({
 				name: "getHandler",
 				data: {
