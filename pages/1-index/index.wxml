@@ -13,7 +13,7 @@
 	<!-- 动画文字 -->
 	<view class="rw_wrapper">
 		<view class="rw_sentence">
-			<text class="rw_hello">Hi, KK_(+.-) \n</text>
+			<text class="rw_hello">Hi, {{userInfo.nickName}} \n</text>
 			<view class="rw_words">
 				<view class="animation">
 					<text class="type">I`m_Lykang<text>_</text></text>

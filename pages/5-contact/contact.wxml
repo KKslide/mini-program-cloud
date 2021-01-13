@@ -21,7 +21,7 @@
 		<view class="contact_info_list">
 			<view class="contact_info_item phone">
 				<text class="fa fa-phone"></text>
-				<text>13143352449</text> 👈call me
+				<text bindtap="phoneCallHandler">13143352449</text> 👈click to call me
 			</view>
 			<view class="contact_info_item email">
 				<text class="fa fa-at"></text>

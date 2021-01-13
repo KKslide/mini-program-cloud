@@ -5,7 +5,7 @@ Page({
 		dataList: [], // 留言列表数据
 		message: "", // 留言框的数据
 	},
-	inputHandler(e){ // 文本框输入监听
+	inputHandler(e) { // 文本框输入监听
 		this.setData({
 			message: e.detail.value
 		})
@@ -17,7 +17,7 @@ Page({
 	// },
 	getMessageList() { // 获取留言列表
 		wx.showLoading({
-		  title: 'loading...',
+			title: 'loading...',
 		});
 		let db = wx.cloud.database().collection("message");
 		db.orderBy("addtime", "desc").get({
@@ -84,5 +84,10 @@ Page({
 	onLoad() {
 		this.getMessageList()
 	},
-	onShareAppMessage(){}
+	phoneCallHandler() {
+		wx.makePhoneCall({
+			phoneNumber: '13143352449' //仅为示例，并非真实的电话号码
+		})
+	},
+	onShareAppMessage() {}
 })

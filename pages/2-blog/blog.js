@@ -11,20 +11,21 @@ Page({
 		curActiveClass: 'HOT',
 		curActiveID: null, // 当前navigation的ID号
 		noContent: false, // 没有当前栏内容flag
-		isOverShare:false,
+		isOverShare: false,
 	},
 	getCategoryList(callback) { // 获取分类
 		let db = wx.cloud.database().collection("category");
 		db.field({
 			_id: true,
 			name: true
-		}).orderBy("addtime", "asc").get({
+		}).orderBy("index", "asc").get({
 			success: res => {
+				let _curActiveID = res.data.filter(v => {
+					return v.name == this.data.curActiveClass;
+				});
 				this.setData({
 					categoryList: res.data,
-					curActiveID: res.data.filter(v => {
-						return v.name == this.data.curActiveClass;
-					})[0]["_id"]
+					curActiveID: _curActiveID[0]["name"] == "HOT" ? "HOT" : _curActiveID[0]["_id"]
 				});
 				wx.nextTick(_ => {
 					if (callback) callback()
@@ -89,7 +90,7 @@ Page({
 		let curCategoryData = e.currentTarget.dataset.cate;
 		this.setData({
 			curActiveClass: curCategoryData.name,
-			curActiveID: curCategoryData._id
+			curActiveID: curCategoryData.name == "HOT" ? "HOT" : curCategoryData._id
 		});
 		wx.nextTick(_ => {
 			this.getContentList()
