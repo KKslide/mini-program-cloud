@@ -1,0 +1,33 @@
+<!-- 引入时间格式化模块 -->
+<wxs module="dateFr" src="../../../filter/dateFr.wxs"></wxs>
+
+<view class="content_page">
+    <view class="search_res_list">
+        <view class="search_res_list_item" wx:for="{{searchResultData}}" wx:key="item._id">
+            <view class="search_res_list_item_left">
+                <view class="search_res_list_item_title">{{item.title}}</view>
+                <view class="search_res_list_item_info">
+                    <view class="search_res_list_item_info_icon date">
+                        <text class="fa fa-clock-o"></text>
+                        <text>{{dateFr.dateFormat(item.addtime,"yyyy-MM-dd")}}</text>
+                    </view>
+                    <view class="search_res_list_item_info_icon viewnum">
+                        <text class="fa fa-eye"></text>
+                        <text>{{item.viewnum}}</text>
+                    </view>
+                    <view class="search_res_list_item_info_icon comment">
+                        <text class="fa fa-comment-o"></text>
+                        <text>99</text>
+                    </view>
+                    <view class="search_res_list_item_info_icon category">
+                        <text class="fa fa-tag"></text>
+                        <text>Fun</text>
+                    </view>
+                </view>
+            </view>
+            <view class="search_res_list_item_right">
+                <image src="{{item.poster}}" mode="widthFix"></image>
+            </view>
+        </view>
+    </view>
+</view>

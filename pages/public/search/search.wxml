@@ -1,0 +1,66 @@
+<view class="content_page">
+    <view class="search_form">
+        <view class="search_input">
+            <icon type="search" size="15" color="#666"></icon>
+            <input type="search" bindinput="inputHandler" value="{{searchVal}}" placeholder="type something here to search" auto-focus="true" confirm-type="search"/>
+            <icon type="cancel" size="15" color="#666" bindtap="clearValue"></icon>
+        </view>
+        <view class="search_cancel" bindtap="go2result">Search</view>
+    </view>
+    <view class="search_history">
+        <view class="search_his_div">
+            <view class="search_his_title">
+                <icon type="info" color="#666" size="15"></icon>
+                <text>Search History</text>
+            </view>
+            <view class="search_his_clear">Clear</view>
+        </view>
+        <view class="search_his_list">
+            <view class="search_list_item">
+                <text class="search_his_text">AAA</text>
+                <text class="fa fa-close"></text>
+            </view>
+            <view class="search_list_item">
+                <text class="search_his_text">BBB</text>
+                <text class="fa fa-close"></text>
+            </view>
+            <view class="search_list_item">
+                <text class="search_his_text">CCC</text>
+                <text class="fa fa-close"></text>
+            </view>
+            <view class="search_list_item">
+                <text class="search_his_text">CCC</text>
+                <text class="fa fa-close"></text>
+            </view>
+            <view class="search_list_item">
+                <text class="search_his_text">CCC</text>
+                <text class="fa fa-close"></text>
+            </view>
+            <view class="search_list_item">
+                <text class="search_his_text">CCC</text>
+                <text class="fa fa-close"></text>
+            </view>
+            <view class="search_list_item">
+                <text class="search_his_text">CCC</text>
+                <text class="fa fa-close"></text>
+            </view>
+            <view class="search_list_item">
+                <text class="search_his_text">CCC</text>
+                <text class="fa fa-close"></text>
+            </view>
+        </view>
+    </view>
+    <view class="hr"></view>
+    <view class="search_his_hot">
+        <view class="search_his_hot_title">
+            <text class="fa fa-star-o"></text>
+            <text class="search_his_hot_text">Hot</text>
+        </view>
+        <view class="search_his_list">
+            <view class="search_his_list_item">
+                <text class="search_his_text">AAA</text>
+            </view>
+        </view>
+    </view>
+    <view class="hr"></view>
+</view>

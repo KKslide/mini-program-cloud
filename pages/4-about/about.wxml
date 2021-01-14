@@ -135,8 +135,8 @@
 		</view>
 	</view>
 	<!-- 简历下载 -->
-	<view class="about_intro next">
-		<view class="about_intro_sub_title download_btn">
+	<view class="about_intro resume">
+		<view class="about_intro_sub_title download_btn" bindtap="downloadHandler">
 			<text class="fa fa-download"></text>
 			Download my resume
 		</view>

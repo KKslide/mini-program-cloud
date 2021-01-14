@@ -90,6 +90,19 @@
                 {
                     "name": "pages/4-about/about",
                     "pathName": "pages/4-about/about",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "pages/public/search/search",
+                    "pathName": "pages/public/search/search",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "pages/public/searchResult/searchResult",
+                    "pathName": "pages/public/searchResult/searchResult",
+                    "query": "",
                     "scene": null
                 }
             ]

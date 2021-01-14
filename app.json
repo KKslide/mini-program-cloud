@@ -5,7 +5,9 @@
 		"pages/3-component/component",
 		"pages/4-about/about",
 		"pages/5-contact/contact",
-		"pages/public/content/content"
+		"pages/public/content/content",
+		"pages/public/search/search",
+		"pages/public/searchResult/searchResult"
 	],
 	"entryPagePath": "pages/1-index/index",
 	"window": {

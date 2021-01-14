@@ -34,7 +34,7 @@ Page({
 		});
 		wx.pageScrollTo({
 			duration: 300,
-			selector: "#comment"
+			selector: "#comment_submit_btn"
 		})
 	},
 	inputHandler(e){ // 评论框输入监听

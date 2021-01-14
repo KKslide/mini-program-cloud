@@ -4,9 +4,9 @@
 <view class='nav bg-black' style='height:{{navH}}px;'>
 	<!-- 搜索框 -->
 	<view class='nav-title'>
-		<view class="INinputheader">
+		<view class="INinputheader" bindtap="go2search">
 			<icon class="INsearchicon" type="search" size="12" />
-			<input class="weui-input" placeholder="输入搜索内容" />
+			<input class="weui-input" placeholder="content search" disabled="true"/>
 		</view>
 	</view>
 </view>

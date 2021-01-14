@@ -1,0 +1,55 @@
+.content_page {
+  padding: 20rpx;
+}
+
+.content_page .search_res_list .search_res_list_item {
+  display: flex;
+  justify-content: space-around;
+  padding: 30rpx 0 20rpx 0;
+  border-bottom: 1px solid #eee;
+}
+
+.content_page .search_res_list .search_res_list_item .search_res_list_item_left {
+  width: 60%;
+  padding-right: 15rpx;
+}
+
+.content_page .search_res_list .search_res_list_item .search_res_list_item_left .search_res_list_item_title {
+  font-size: 30rpx;
+  height: 70%;
+  word-wrap: break-word;
+}
+
+.content_page .search_res_list .search_res_list_item .search_res_list_item_left .search_res_list_item_info {
+  display: flex;
+  justify-content: flex-start;
+  height: 30%;
+}
+
+.content_page .search_res_list .search_res_list_item .search_res_list_item_left .search_res_list_item_info .search_res_list_item_info_icon {
+  margin-right: 20rpx;
+}
+
+.content_page .search_res_list .search_res_list_item .search_res_list_item_left .search_res_list_item_info .search_res_list_item_info_icon text.fa {
+  margin-right: 10rpx;
+}
+
+.content_page .search_res_list .search_res_list_item .search_res_list_item_left .search_res_list_item_info .search_res_list_item_info_icon text {
+  font-size: 20rpx;
+}
+
+.content_page .search_res_list .search_res_list_item .search_res_list_item_right {
+  width: 40%;
+}
+
+.content_page .search_res_list .search_res_list_item .search_res_list_item_right image {
+  overflow: hidden;
+  border-radius: 20rpx;
+  width: 100%;
+}
+
+.content_page .hr {
+  width: 100%;
+  height: 1px;
+  background-color: #eee;
+}

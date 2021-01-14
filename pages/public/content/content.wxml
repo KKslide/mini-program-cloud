@@ -37,7 +37,7 @@
 			</view>
 		</form>
 	</view>
-	<view class="hr"></view>
+	<view class="hr" id="comment_submit_btn"></view>
 	<!-- 评论列表 -->
 	<view class="comment_list">
 		<view class="comment_list_ul">

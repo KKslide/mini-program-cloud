@@ -86,6 +86,11 @@ Page({
 			}
 		})
 	},
+	go2search: function(e){ // 去到搜索页
+		wx.navigateTo({
+		  url: '../public/search/search',
+		})
+	},
 	switchCate(e) { // 点击tab栏
 		let curCategoryData = e.currentTarget.dataset.cate;
 		this.setData({
