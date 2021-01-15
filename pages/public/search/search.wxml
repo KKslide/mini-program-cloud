@@ -5,7 +5,7 @@
             <input type="search" bindinput="inputHandler" value="{{searchVal}}" placeholder="type something here to search" auto-focus="true" confirm-type="search"/>
             <icon type="cancel" size="15" color="#666" bindtap="clearValue"></icon>
         </view>
-        <view class="search_cancel" bindtap="go2result">Search</view>
+        <view class="search_cancel" bindtap="go2result">{{searchVal.length==0?"Cancel":"Search"}}</view>
     </view>
     <view class="search_history">
         <view class="search_his_div">
@@ -13,40 +13,12 @@
                 <icon type="info" color="#666" size="15"></icon>
                 <text>Search History</text>
             </view>
-            <view class="search_his_clear">Clear</view>
+            <view class="search_his_clear" bindtap="clearSearchHistoryHandler">Clear</view>
         </view>
         <view class="search_his_list">
-            <view class="search_list_item">
-                <text class="search_his_text">AAA</text>
-                <text class="fa fa-close"></text>
-            </view>
-            <view class="search_list_item">
-                <text class="search_his_text">BBB</text>
-                <text class="fa fa-close"></text>
-            </view>
-            <view class="search_list_item">
-                <text class="search_his_text">CCC</text>
-                <text class="fa fa-close"></text>
-            </view>
-            <view class="search_list_item">
-                <text class="search_his_text">CCC</text>
-                <text class="fa fa-close"></text>
-            </view>
-            <view class="search_list_item">
-                <text class="search_his_text">CCC</text>
-                <text class="fa fa-close"></text>
-            </view>
-            <view class="search_list_item">
-                <text class="search_his_text">CCC</text>
-                <text class="fa fa-close"></text>
-            </view>
-            <view class="search_list_item">
-                <text class="search_his_text">CCC</text>
-                <text class="fa fa-close"></text>
-            </view>
-            <view class="search_list_item">
-                <text class="search_his_text">CCC</text>
-                <text class="fa fa-close"></text>
+            <view class="search_list_item" wx:for="{{search_history}}" wx:key="index">
+                <text class="search_his_text">{{item}}</text>
+                <text class="fa fa-close" bindtap="removeSearchItem" data-item="{{item}}"></text>
             </view>
         </view>
     </view>
@@ -57,8 +29,8 @@
             <text class="search_his_hot_text">Hot</text>
         </view>
         <view class="search_his_list">
-            <view class="search_his_list_item">
-                <text class="search_his_text">AAA</text>
+            <view class="search_his_list_item" wx:for="{{hotTagList}}" wx:key="index">
+                <text class="search_his_text" data-tag="{{item}}" bindtap="hotTagSearchHandler">{{item}}</text>
             </view>
         </view>
     </view>

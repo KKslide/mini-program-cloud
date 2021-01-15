@@ -28,31 +28,6 @@
 			<!-- <view class="t_title">Blog</view> -->
 			<!-- 列表 -->
 			<view class="blog_list">
-				<view class="blog_item" wx:if="{{false}}">
-					<!-- 文章标题 -->
-					<view class="blog_title">This is A Title</view>
-					<!-- 文章信息 -->
-					<view class="blog_info">
-						<view class="blog_info_viewnum"><text class="fa fa-eye"></text>99</view>
-						<text class="blog_info_divide"> | </text>
-						<view class="blog_info_comment_num"><text class="fa fa-comment-o"></text>99</view>
-						<text class="blog_info_divide"> | </text>
-						<view class="blog_info_addtime"><text class="fa fa-clock-o"></text>2020-12-31 23:59:59</view>
-						<text class="blog_info_divide"> | </text>
-						<view class="blog_info_category"><text class="fa fa-tag"></text>Blog</view>
-					</view>
-					<!-- 文章描述 -->
-					<view class="blog_description">
-						<text>THIS IS SOME DESCRIPTION</text>
-					</view>
-					<!-- 文章背景图 -->
-					<view class="blog_img">
-						<image src="http://example.kkslide.fun/upload_083d632b64b0862137d29a1bff4af1c9" mode="widthFix"
-							lazy-load="true" data-param="AAA" bindtap="go2detail"></image>
-					</view>
-					<!-- 文章链接 -->
-					<view class="blog_link" data-param="AAA" bindtap="go2detail">阅读全文 >></view>
-				</view>
 				<view class="blog_item" wx:for="{{contentList}}" wx:key="_id">
 					<!-- 文章标题 -->
 					<view class="blog_title">{{item.title}}</view>
@@ -71,12 +46,12 @@
 						<text>{{item.description}}</text>
 					</view>
 					<!-- 文章背景图 -->
-					<view class="blog_img blog_video">
+					<view class="blog_img blog_video" data-param="{{item._id}}" bindtap="go2detail">
 						<text class="fa fa-play-circle-o" wx:if="{{item.video_src!=''}}"></text>
-						<image src="{{item.poster}}" data-param="{{item}}" bindtap="go2detail" mode="widthFix" lazy-load="true"></image>
+						<image src="{{item.poster}}" mode="widthFix" lazy-load="true"></image>
 					</view>
 					<!-- 文章链接 -->
-					<view class="blog_link" data-param="{{item}}" bindtap="go2detail">CHECK >></view>
+					<view class="blog_link" data-param="{{item._id}}" bindtap="go2detail">CHECK >></view>
 				</view>
 				<view class="blog_item" wx:if="{{noContent}}">
 					<view class="blog_list_empty">

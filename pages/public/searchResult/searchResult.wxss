@@ -40,12 +40,16 @@
 
 .content_page .search_res_list .search_res_list_item .search_res_list_item_right {
   width: 40%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .content_page .search_res_list .search_res_list_item .search_res_list_item_right image {
   overflow: hidden;
   border-radius: 20rpx;
   width: 100%;
+  box-shadow: 1px 0px 14px rgba(0, 0, 0, 0.3);
 }
 
 .content_page .hr {

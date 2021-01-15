@@ -3,7 +3,8 @@
 
 <view class="content_page">
     <view class="search_res_list">
-        <view class="search_res_list_item" wx:for="{{searchResultData}}" wx:key="item._id">
+        <!-- 搜索结果列表 -->
+        <view class="search_res_list_item" wx:for="{{searchResultData}}" wx:key="_id" data-id="{{item._id}}" bindtap="go2detail">
             <view class="search_res_list_item_left">
                 <view class="search_res_list_item_title">{{item.title}}</view>
                 <view class="search_res_list_item_info">
@@ -17,17 +18,21 @@
                     </view>
                     <view class="search_res_list_item_info_icon comment">
                         <text class="fa fa-comment-o"></text>
-                        <text>99</text>
+                        <text>{{item.comment.length}}</text>
                     </view>
                     <view class="search_res_list_item_info_icon category">
                         <text class="fa fa-tag"></text>
-                        <text>Fun</text>
+                        <text>{{item.category[0].name}}</text>
                     </view>
                 </view>
             </view>
             <view class="search_res_list_item_right">
-                <image src="{{item.poster}}" mode="widthFix"></image>
+                <image src="{{item.poster}}" mode="widthFix" lazy-load="true"></image>
             </view>
+        </view>
+        <!-- 无搜索结果 -->
+        <view class="search_res_list_item no_result" wx:if="{{searchResultData && searchResultData.length==0}}">
+            🤦‍♂️Non-search result, try other keywords
         </view>
     </view>
 </view>

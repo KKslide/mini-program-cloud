@@ -32,10 +32,14 @@
             }
             .search_res_list_item_right{
                 width: 40%;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
                 image{
                     overflow: hidden;
                     border-radius: 20rpx;
                     width:100%;
+                    box-shadow: 1px 0px 14px rgba(0, 0, 0, 0.3);
                 }
             }
         }

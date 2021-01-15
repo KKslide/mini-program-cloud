@@ -67,7 +67,9 @@ Page({
 
 	},
 	go2detail: function (e) { // 跳转详情页
-		let article_chosen = e.currentTarget.dataset['param'];
+		let article_chosen = this.data.contentList.filter(v=>{
+			return v._id == e.currentTarget.dataset["param"];
+		})[0];
 		wx.navigateTo({
 			url: '../public/content/content',
 			events: {

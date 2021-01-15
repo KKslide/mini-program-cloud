@@ -66,7 +66,7 @@ page {
 			.blog_item {
 				border-bottom: 1px solid #ddd;
 				padding-bottom: 20rpx;
-				margin-bottom: 20rpx;
+				margin-bottom: 40rpx;
 
 				.blog_title {
 					font-size: 50rpx;
@@ -108,9 +108,15 @@ page {
 
 				.blog_img {
 					position: relative;
+					display: flex;
+					box-shadow: 1px 5px 18px rgba(0,0,0,.4) inset;
+					border-radius: 15rpx;
 
 					image {
 						width: 100%;
+						z-index:-1;
+    					vertical-align: top;
+						border-radius: 15rpx;
 					}
 				}
 
@@ -130,6 +136,7 @@ page {
 					display: inline-block;
 					border-bottom: 3px solid #000;
 					font-weight: lighter;
+					margin-top: 30rpx;
 				}
 
 				.blog_list_empty {
