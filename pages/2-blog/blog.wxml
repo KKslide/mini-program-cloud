@@ -6,7 +6,7 @@
 	<view class='nav-title'>
 		<view class="INinputheader" bindtap="go2search">
 			<icon class="INsearchicon" type="search" size="12" />
-			<input class="weui-input" placeholder="content search" disabled="true"/>
+			<input class="weui-input" placeholder="Content Search" disabled="true"/>
 		</view>
 	</view>
 </view>
@@ -21,7 +21,7 @@
 		<text class="fa fa-outdent"></text>
 	</view>
 </view>
-<scroll-view class='overflow' style='height:calc(100vh - {{navH}}px);padding-top:{{navH}}px;' scroll-y refresher-enabled="true">
+<scroll-view class='overflow' style='height:calc(100vh - {{navH}}px);padding-top:{{navH}}px;' scroll-y>
 	<view class='hidden'>
 		<view class="blog_page">
 			<!-- 标题 -->

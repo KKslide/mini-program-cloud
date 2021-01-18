@@ -1,0 +1,2 @@
+
+   <web-view binderror="error"  bindload="error"   src="https://baidu.com"></web-view>

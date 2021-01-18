@@ -17,7 +17,7 @@
         </view>
         <view class="search_his_list">
             <view class="search_list_item" wx:for="{{search_history}}" wx:key="index">
-                <text class="search_his_text">{{item}}</text>
+                <text class="search_his_text" bindtap="hisTagSearchHandler" data-tag="{{item}}">{{item}}</text>
                 <text class="fa fa-close" bindtap="removeSearchItem" data-item="{{item}}"></text>
             </view>
         </view>

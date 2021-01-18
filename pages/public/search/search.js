@@ -4,7 +4,8 @@ Page({
     data: {
         searchVal: "",
         search_history: null,
-        hotTagList: ["Vue", "小程序", "CSS", "js", "2019", "2020", "篮球", "轮滑", "Gopro", "刷街"]
+        hotTagList: ["Vue", "小程序", "CSS", "js", "2019", "2020", "篮球", "轮滑", "Gopro", "刷街"],
+        loaded: false
     },
     onLoad() {
         wx.getStorage({
@@ -12,7 +13,8 @@ Page({
             success: res => {
                 console.log(res);
                 this.setData({
-                    search_history: res.data
+                    search_history: res.data,
+                    loaded: true
                 })
             },
             fail: err => {
@@ -24,24 +26,26 @@ Page({
         })
     },
     onShow() {
-        this.setData({
-            searchVal: ""
-        })
-        wx.getStorage({
-            key: "search_history",
-            success: res => {
-                console.log(res);
-                this.setData({
-                    search_history: res.data
-                })
-            },
-            fail: err => {
-                console.log(err);
-                this.setData({
-                    search_history: []
-                })
-            }
-        })
+        if (this.data.loaded) {
+            this.setData({
+                searchVal: ""
+            })
+            wx.getStorage({
+                key: "search_history",
+                success: res => {
+                    console.log(res);
+                    this.setData({
+                        search_history: res.data
+                    })
+                },
+                fail: err => {
+                    console.log(err);
+                    this.setData({
+                        search_history: []
+                    })
+                }
+            })
+        }
     },
     inputHandler(e) {
         this.setData({
@@ -79,6 +83,20 @@ Page({
         })
     },
     hotTagSearchHandler(e) {
+        this.setData({
+            searchVal: e.currentTarget.dataset.tag
+        });
+        wx.navigateTo({
+            url: '../searchResult/searchResult',
+            success: res => { // 发送数据到子页面
+                // 通过eventChannel向被打开页面传送数据
+                res.eventChannel.emit('acceptDataFromSearchPage', {
+                    data: this.data.searchVal
+                })
+            },
+        })
+    },
+    hisTagSearchHandler(e){
         this.setData({
             searchVal: e.currentTarget.dataset.tag
         });

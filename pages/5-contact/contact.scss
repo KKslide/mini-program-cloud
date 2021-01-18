@@ -65,21 +65,28 @@
     // 社交媒体
     .contact_social_media {
         .contact_social_media_title {
-            font-size: 40rpx;
+            font-size: 35rpx;
+            font-weight: bold;
             margin: 15rpx 0 15rpx 20rpx;
         }
 
         .contact_social_media_list {
             display: flex;
             justify-content: start;
-            margin-left: 20rpx;
+            margin-left: 25rpx;
 
             text {
                 width: 45rpx;
                 height: 45rpx;
                 font-size: 45rpx;
-                color: #000;
+                color: #333;
                 margin-right: 30rpx;
+            }
+            text.fa-bilibili{
+                background-image: url("https://6b61-kangyouknowwho-8ge6apb585a940c6-1304576484.tcb.qcloud.la/bilibili_icon.png");
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center center;
             }
         }
     }
