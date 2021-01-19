@@ -20,17 +20,19 @@
     .contact_form {
         .page-section.page-section-gap {
             position: relative;
+
             textarea.contact_textarea {
                 padding: 5%;
                 width: 90%;
                 height: 200rpx;
                 border: 1px solid #000;
             }
-            .contact_msg_length{
+
+            .contact_msg_length {
                 position: absolute;
-                right:15rpx;
+                right: 15rpx;
                 bottom: 10rpx;
-                color:#666;
+                color: #666;
             }
         }
 
@@ -45,16 +47,18 @@
     .contact_info {
         .contact_info_list {
             margin-left: 20rpx;
-            font-size:30rpx;
+            font-size: 30rpx;
 
             .contact_info_item {
                 margin: 10rpx 0;
+
                 text.fa {
                     width: 30rpx;
                     height: 30rpx;
                     font-size: 30rpx;
                 }
-                text:nth-child(2){
+
+                text:nth-child(2) {
                     color: rgb(7, 87, 141);
                 }
 
@@ -82,13 +86,108 @@
                 color: #333;
                 margin-right: 30rpx;
             }
-            text.fa-bilibili{
+
+            text.fa-bilibili {
                 background-image: url("https://6b61-kangyouknowwho-8ge6apb585a940c6-1304576484.tcb.qcloud.la/bilibili_icon.png");
                 background-size: contain;
                 background-repeat: no-repeat;
-                background-position: center center;
+                background-position: center -1rpx;
             }
         }
+    }
+
+    // 社交媒体弹窗
+    .contact_social_media_dialog {
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        z-index: 99;
+        transition: opacity .3s;
+
+        .media_dialog_under_cover {
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, .75);
+
+            .media_dialog {
+                width: 80%;
+                border-radius: 20rpx;
+                border: 3px solid #000;
+                background-color: #fff;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                padding: 20rpx 5rpx;
+
+                .media_dialog_close {
+                    width: 45rpx;
+                    height: 45rpx;
+                    border: 2px solid #000;
+                    border-radius: 50%;
+                    position: absolute;
+                    top: -22.5rpx;
+                    right: -22.5rpx;
+                    background-color: #fff;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    text.fa-close {
+                        font-size: 30rpx;
+                        font-weight: lighter;
+                    }
+                }
+
+                .media_dialog_logo {
+                    text-align: center;
+
+                    text.fa {
+                        color: #000;
+                        font-size: 100rpx;
+                        width: 100rpx;
+                        height: 100rpx;
+                    }
+
+                    text.fa-bilibili::after {
+                        content: "";
+                        display: block;
+                        width: 100rpx;
+                        height: 100rpx;
+                        background-image: url("https://6b61-kangyouknowwho-8ge6apb585a940c6-1304576484.tcb.qcloud.la/bilibili_icon.png");
+                        background-repeat: no-repeat;
+                        background-size: contain;
+                        background-position: center;
+                    }
+                }
+
+                .media_link {
+                    font-size: 35rpx;
+                    font-weight: bold;
+                    text-align: center;
+                    margin: 20rpx 0;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                }
+
+                .media_link_copy_btn {
+                    width: 20%;
+                    border-radius: 18rpx;
+                    padding: 8rpx 50rpx;
+                    border: 2px solid #000;
+                    text-align: center;
+                    margin: 0 auto;
+                }
+            }
+        }
+    }
+
+    .contact_social_media_dialog.hide {
+        opacity: 0;
+        z-index: -999;
     }
 
     // 留言列表

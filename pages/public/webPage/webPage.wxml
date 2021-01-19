@@ -1,2 +1,3 @@
-
-   <web-view binderror="error"  bindload="error"   src="https://baidu.com"></web-view>
+<view>
+   <web-view bindload="loadFn" src="{{url}}"></web-view>
+</view>

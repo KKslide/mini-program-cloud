@@ -1,38 +1,19 @@
 const app = getApp()
-
+const mediaData = require("./media_conf")
 Page({
 	data: {
 		dataList: [], // 留言列表数据
 		message: "", // 留言框的数据
-		socialMediaList:[
-			{name:"github",url:"https://github.com/KKslide"},
-			{name:"facebook",url:"https://www.facebook.com/profile.php?id=100025250295698"},
-			{name:"twitter",url:"https://twitter.com/KK_slide"},
-			{name:"instagram",url:"https://www.instagram.com/kang1105_/"},
-			{name:"weibo",url:"https://weibo.com/kkslide"},
-			{name:"bilibili",url:"https://space.bilibili.com/334163601"}
-		]
+		socialMediaList: mediaData,
+		mediaDialogVisible: false, // 社交媒体弹窗
+		currentMediaLink: ""
+	},
+	onLoad() {
+		this.getMessageList()
 	},
 	inputHandler(e) { // 文本框输入监听
 		this.setData({
 			message: e.detail.value
-		})
-	},
-	// blurHandler(e) { // 文本框失焦监听
-	// 	this.setData({
-	// 		message: e.detail.value
-	// 	})
-	// },
-	go2detail(e){
-		let url = e.currentTarget.dataset.url;
-		wx.navigateTo({
-		  url: '../public/webPage/webPage',
-		  success: res => { // 发送数据到子页面
-			// 通过eventChannel向被打开页面传送数据
-			// res.eventChannel.emit('acceptDataFromParentPage', {
-			// 	data: url
-			// })
-		},
 		})
 	},
 	getMessageList() { // 获取留言列表
@@ -101,12 +82,40 @@ Page({
 			}
 		})
 	},
-	onLoad() {
-		this.getMessageList()
-	},
-	phoneCallHandler() {
+	phoneCallHandler() { // 拨打电话
 		wx.makePhoneCall({
 			phoneNumber: '13143352449' //仅为示例，并非真实的电话号码
+		})
+	},
+	openMediaLink(e) {
+		let link = e.currentTarget.dataset.link;
+		this.setData({
+			mediaDialogVisible: true,
+			currentMediaLink: link.url,
+			currentMediaLinkIcon: link.name
+		})
+	},
+	copyHandler(e) {
+		let curLink = this.data.currentMediaLink
+		wx.setClipboardData({
+			data: curLink,
+			success: res => {
+				wx.getClipboardData({
+					success: res => {
+						console.log(res.data) // data
+						setTimeout(() => {
+							this.setData({
+								mediaDialogVisible: false
+							})
+						}, 800);
+					}
+				})
+			}
+		})
+	},
+	dialogCloseHandler() {
+		this.setData({
+			mediaDialogVisible: false
 		})
 	},
 	onShareAppMessage() {}

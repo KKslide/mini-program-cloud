@@ -37,13 +37,20 @@
 	<view class="contact_social_media">
 		<view class="contact_social_media_title">Follow me on social media</view>
 		<view class="contact_social_media_list">
-			<!-- <text class="fa fa-github"></text>
-			<text class="fa fa-facebook"></text>
-			<text class="fa fa-twitter"></text>
-			<text class="fa fa-instagram"></text>
-			<text class="fa fa-weibo"></text>
-			<text class="fa fa-bilibili"></text> -->
-			<text wx:for="{{socialMediaList}}" wx:key="name" class="fa fa-{{item.name}}" data-url="{{item.url}}" bindtap="go2detail"></text>
+			<text wx:for="{{socialMediaList}}" wx:key="name" class="fa fa-{{item.name}}" data-link="{{item}}" bindtap="openMediaLink"></text>
+		</view>
+	</view>
+	<!-- 社交媒体链接弹窗 -->
+	<view class="contact_social_media_dialog {{mediaDialogVisible?'':'hide'}}">
+		<view class="media_dialog_under_cover">
+			<view class="media_dialog">
+				<view class="media_dialog_close" bindtap="dialogCloseHandler">
+					<text class="fa fa-close"></text>
+				</view>
+				<view class="media_dialog_logo"><text class="fa fa-{{currentMediaLinkIcon}}"></text></view>
+				<view class="media_link">{{currentMediaLink}}</view>
+				<view class="media_link_copy_btn" data-link="{{currentMediaLink}}" bindtap="copyHandler">COPY</view>
+			</view>
 		</view>
 	</view>
 	<view class="hr"></view>
