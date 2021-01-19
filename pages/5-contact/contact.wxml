@@ -50,6 +50,9 @@
 				<view class="media_dialog_logo"><text class="fa fa-{{currentMediaLinkIcon}}"></text></view>
 				<view class="media_link">{{currentMediaLink}}</view>
 				<view class="media_link_copy_btn" data-link="{{currentMediaLink}}" bindtap="copyHandler">COPY</view>
+				<view class="media_link_desc">
+					Because the 'web-view' tag reuires for HTTPS protocal, too expensive for me which means you might need to copy the link and open with a browser😜
+				</view>
 			</view>
 		</view>
 	</view>

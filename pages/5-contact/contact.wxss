@@ -160,6 +160,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  padding: 0 10rpx;
 }
 
 .contact_container .contact_social_media_dialog .media_dialog_under_cover .media_dialog .media_link_copy_btn {
@@ -169,6 +170,11 @@
   border: 2px solid #000;
   text-align: center;
   margin: 0 auto;
+}
+
+.contact_container .contact_social_media_dialog .media_dialog_under_cover .media_dialog .media_link_desc {
+  text-align: center;
+  padding: 40rpx 40rpx;
 }
 
 .contact_container .contact_social_media_dialog.hide {
