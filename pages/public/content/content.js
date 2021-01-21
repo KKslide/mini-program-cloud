@@ -15,7 +15,7 @@ Page({
 		// videoSrc: "http://example.kkslide.fun/trip-in-guilin_v2.mp4", // 文章视频链接
 		textAreaFocus: false, // 文本框聚焦
 		comment: "", // 评论内容
-		isOverShare:true
+		isOverShare: true
 	},
 	onShareAppMessage(res) { // 分享设置
 		// console.log(res);
@@ -37,7 +37,7 @@ Page({
 			selector: "#comment_submit_btn"
 		})
 	},
-	inputHandler(e){ // 评论框输入监听
+	inputHandler(e) { // 评论框输入监听
 		this.setData({
 			comment: e.detail.value
 		})
@@ -47,9 +47,9 @@ Page({
 			textAreaFocus: false
 		})
 	},
-	likeHandler(){ // 收藏按钮点击事件
+	likeHandler() { // 收藏按钮点击事件
 		wx.showToast({
-		  title: '哎呀还没写- -',
+			title: '哎呀还没写- -',
 		})
 	},
 	backHandler() { // 返回上一页
@@ -66,26 +66,43 @@ Page({
 				duration: 1500
 			});
 		} else {
-			if (app.globalData.userInfo) {
-				this.setData({
-					userInfo: app.globalData.userInfo,
-				});
-				this.commentPost()
-			} else {
-				wx.getUserInfo({
-					success: res => {
-						console.log("用户数据获取成功：", res);
-						app.globalData.userInfo = res.userInfo;
-						this.setData({
-							userInfo: res.userInfo,
-						});
-						this.commentPost()
+			/* *******拦截评论内容,进行审核验证******* */
+			wx.cloud.callFunction({
+					name: "addHandler",
+					data: {
+						collection: "checkContent",
+						content: this.data.comment.trim()
 					},
-					fail: err => {
-						console.log(err);
+				})
+				.then(res => {
+					console.log("接口调用结果: ", res);
+					if (res.result.errCode == 87014) { // 1- 评论有敏感内容
+						return wx.showToast({
+							title: '评论不能太敏感噢',
+						})
+					} else { // 2- 评论正常,可提交
+						if (app.globalData.userInfo) {
+							this.setData({
+								userInfo: app.globalData.userInfo,
+							});
+							this.commentPost()
+						} else {
+							wx.getUserInfo({
+								success: res => {
+									console.log("用户数据获取成功：", res);
+									app.globalData.userInfo = res.userInfo;
+									this.setData({
+										userInfo: res.userInfo,
+									});
+									this.commentPost()
+								},
+								fail: err => {
+									console.log(err);
+								}
+							})
+						}
 					}
 				})
-			}
 		}
 	},
 	commentPost() { // 评论提交
@@ -106,14 +123,11 @@ Page({
 				comment: commentData
 			}
 		}).then(res => {
-			console.log(res);
 			if (res.result.errMsg == "collection.add:ok") {
 				const eventChannel = this.getOpenerEventChannel();
 				eventChannel.emit("updateContentList");
 				let tempCurComment = util.deepClone(this.data.content);
-				console.log(tempCurComment);
 				tempCurComment["comment"].unshift(commentData);
-				console.log(tempCurComment);
 				this.setData({
 					comment: "",
 					content: tempCurComment,
