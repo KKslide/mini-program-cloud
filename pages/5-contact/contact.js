@@ -42,26 +42,47 @@ Page({
 				duration: 1500
 			});
 		} else {
-			if (app.globalData.userInfo) {
-				this.setData({
-					userInfo: app.globalData.userInfo,
-				});
-				this.msgPost()
-			} else {
-				wx.getUserInfo({
-					success: res => {
-						console.log("用户数据获取成功：", res);
-						app.globalData.userInfo = res.userInfo;
-						this.setData({
-							userInfo: res.userInfo,
-						});
-						this.msgPost()
+			wx.showLoading({
+				title: 'loading',
+			});
+			/* *******拦截评论内容,进行审核验证******* */
+			wx.cloud.callFunction({
+					name: "addHandler",
+					data: {
+						collection: "checkContent",
+						content: this.data.message.trim()
 					},
-					fail: err => {
-						console.log(err);
+				})
+				.then(res => {
+					console.log("接口调用结果: ", res);
+					if (res.result.errCode == 87014) { // 1- 留言内容有敏感内容
+						wx.hideLoading();
+						return wx.showToast({
+							title: '评论不能太敏感噢',
+						})
+					} else { // 2- 留言内容正常,可提交
+						if (app.globalData.userInfo) {
+							this.setData({
+								userInfo: app.globalData.userInfo,
+							});
+							this.msgPost()
+						} else {
+							wx.getUserInfo({
+								success: res => {
+									console.log("用户数据获取成功：", res);
+									app.globalData.userInfo = res.userInfo;
+									this.setData({
+										userInfo: res.userInfo,
+									});
+									this.msgPost()
+								},
+								fail: err => {
+									console.log(err);
+								}
+							})
+						}
 					}
 				})
-			}
 		}
 	},
 	msgPost() { // 留言提交

@@ -66,6 +66,9 @@ Page({
 				duration: 1500
 			});
 		} else {
+			wx.showLoading({
+				title: 'loading',
+			});
 			/* *******拦截评论内容,进行审核验证******* */
 			wx.cloud.callFunction({
 					name: "addHandler",
@@ -77,6 +80,7 @@ Page({
 				.then(res => {
 					console.log("接口调用结果: ", res);
 					if (res.result.errCode == 87014) { // 1- 评论有敏感内容
+						wx.hideLoading();
 						return wx.showToast({
 							title: '评论不能太敏感噢',
 						})
@@ -106,9 +110,6 @@ Page({
 		}
 	},
 	commentPost() { // 评论提交
-		wx.showLoading({
-			title: 'loading',
-		});
 		let commentData = {
 			com_content: this.data.comment.trim(),
 			com_time: new Date().getTime(),
@@ -125,8 +126,8 @@ Page({
 		}).then(res => {
 			if (res.result.errMsg == "collection.add:ok") {
 				const eventChannel = this.getOpenerEventChannel();
-				eventChannel.emit("updateContentList");
-				let tempCurComment = util.deepClone(this.data.content);
+				if (JSON.stringify(eventChannel) != "{}") eventChannel.emit("updateContentList");
+				let tempCurComment = util.clone(this.data.content, 'obj');
 				tempCurComment["comment"].unshift(commentData);
 				this.setData({
 					comment: "",

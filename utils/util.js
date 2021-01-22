@@ -59,7 +59,21 @@ const deepClone = function (target) {
     return result;
 }
 
+/**
+ * 深拷贝函数-ES6
+ * @param {Object} origin 要拷贝的数据
+ * @param {String} type 该数据是对象还是数组
+ */
+const clone = (origin, type) => {
+    if (type == 'obj') {
+        return Object.assign({}, origin);
+    } else if (type == 'arr') {
+        return Object.values(Object.assign({}, origin))
+    }
+}
+
 module.exports = {
     formatTime: formatTime,
-    deepClone: deepClone
+    deepClone: deepClone,
+    clone: clone
 }
