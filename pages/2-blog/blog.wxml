@@ -48,7 +48,7 @@
 					<!-- 文章背景图 -->
 					<view class="blog_img blog_video" data-param="{{item._id}}" bindtap="go2detail">
 						<text class="fa fa-play-circle-o" wx:if="{{item.video_src!=''}}"></text>
-						<image src="{{item.poster}}" mode="widthFix" lazy-load="true"></image>
+						<image src="{{item.poster}}" mode="aspectFill" lazy-load="true"></image>
 					</view>
 					<!-- 文章链接 -->
 					<view class="blog_link" data-param="{{item._id}}" bindtap="go2detail">CHECK >></view>

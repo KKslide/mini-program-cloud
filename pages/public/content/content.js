@@ -160,9 +160,9 @@ Page({
 						content: res.result.list[0]
 					})
 				} else {}
+				wx.hideLoading()
 			}).catch(err => {
 				console.log(err);
-			}).finally(_ => {
 				wx.hideLoading()
 			})
 		} else { // 如果是列表页点击进入
