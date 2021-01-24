@@ -22,8 +22,9 @@
         "checkSiteMap": true,
         "uploadWithSourceMap": true,
         "compileHotReLoad": false,
-        "useMultiFrameRuntime": false,
+        "useMultiFrameRuntime": true,
         "useApiHook": true,
+        "useApiHostProcess": false,
         "babelSetting": {
             "ignore": [],
             "disablePlugins": [],
@@ -66,7 +67,7 @@
                 {
                     "name": "pages/public/content/content",
                     "pathName": "pages/public/content/content",
-                    "query": "contentID=ce805e785fe58dec000be4b94c6c87b3",
+                    "query": "contentID=b45a21d55fe58e24000d272d3abf2347",
                     "scene": null
                 },
                 {
