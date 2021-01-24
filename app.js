@@ -56,7 +56,7 @@ App({
 					return {
 						title: 'Kangyouknowwho',
 						path: "/pages/1-index/index", //若无path 默认跳转分享页
-						imageUrl: 'http://example.kkslide.fun/space-2.jpg' //若无imageUrl 截图当前页面
+						imageUrl: 'https://6b61-kangyouknowwho-8ge6apb585a940c6-1304576484.tcb.qcloud.la/kk-image.jpg?sign=101b0c289435ff24c8410683934337c1&t=1611462052' //若无imageUrl 截图当前页面
 					}
 				}
 			}
