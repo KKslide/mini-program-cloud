@@ -15,6 +15,7 @@ Page({
 		// videoSrc: "http://example.kkslide.fun/trip-in-guilin_v2.mp4", // 文章视频链接
 		textAreaFocus: false, // 文本框聚焦
 		comment: "", // 评论内容
+		isFromSharePage: false, // 是否是从分享页面进来的
 		isOverShare: true
 	},
 	onShareAppMessage(res) { // 分享设置
@@ -146,7 +147,7 @@ Page({
 			mask: true
 		});
 		const that = this;
-		if (option.contentID) { // 如果是分享页进入(今晚修改viewnum++)
+		if (option.contentID) { // 如果是分享页进入
 			wx.cloud.callFunction({
 				name: "getHandler",
 				data: {
@@ -154,10 +155,13 @@ Page({
 					contentID: option.contentID
 				}
 			}).then(res => {
+				let CONTENT = res.result.list[0];
+				CONTENT.viewnum += 1;
 				if (res.result) {
 					WxParse.wxParse('article', 'html', res.result.list[0].composition, that, 5);
 					this.setData({
-						content: res.result.list[0]
+						content: CONTENT,
+						isFromSharePage: true
 					})
 				} else {}
 				wx.hideLoading()
@@ -174,7 +178,8 @@ Page({
 				// wxparse解析文章内容, 文档: https://github.com/icindy/wxParse
 				WxParse.wxParse('article', 'html', contentData.composition, that, 5);
 				this.setData({
-					content: contentData
+					content: contentData,
+					isFromSharePage: false
 				})
 				wx.cloud.callFunction({
 					name: "updateHandler",
@@ -192,6 +197,25 @@ Page({
 				})
 			})
 		}
-		return
+	},
+	onUnload: function (option) {
+		// 页面销毁时执行
+		console.log("页面销毁,当前viewnum: ", this.data.content.viewnum);
+		if (this.data.isFromSharePage) {
+			wx.cloud.callFunction({
+					name: "updateHandler",
+					data: {
+						collection: "view_num",
+						_id: this.data.content._id,
+						viewnum: this.data.content.viewnum
+					}
+				})
+				.then(res => {
+					console.log(res)
+				})
+				.catch(err => {
+					console.log(err)
+				})
+		}
 	},
 })

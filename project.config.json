@@ -41,7 +41,7 @@
         "minifyWXSS": true
     },
     "compileType": "miniprogram",
-    "libVersion": "2.14.3",
+    "libVersion": "2.14.1",
     "appid": "wx4b9ba67a1dfc8d83",
     "projectname": "mini-program-cloud",
     "debugOptions": {
@@ -67,7 +67,7 @@
                 {
                     "name": "pages/public/content/content",
                     "pathName": "pages/public/content/content",
-                    "query": "contentID=b45a21d55fe58e24000d272d3abf2347",
+                    "query": "contentID=21ded5cb5ffc625d049e74e007e81130",
                     "scene": null
                 },
                 {
