@@ -1,7 +1,14 @@
 App({
 	onLaunch: function () {
 		wx.cloud.init({
-			env: "kangyouknowwho-8ge6apb585a940c6"
+			env: "kangyouknowwho-8ge6apb585a940c6",
+			traceUser: true
+		})
+
+		wx.cloud.callFunction({
+			name: "getOpenID"
+		}).then(res => {
+			this.globalData.openid = res.result.openid
 		})
 
 		// 获取用户信息
@@ -38,6 +45,7 @@ App({
 		this.onShareAppMessage()
 	},
 	globalData: {
+		openid: "",
 		userInfo: null,
 		navHeight: 0
 	},

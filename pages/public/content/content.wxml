@@ -20,9 +20,9 @@
 	</view>
 	<view class="content_article">
 		<template is="wxParse" data="{{wxParseData:article.nodes}}" />
-		<view class="content_video" wx:if="{{content && content.video_src!=''}}">
-			<video src="{{content.video_src}}" title="{{content.title}}" play-btn-position="center"
-				show-snapshot-button="true"></video>
+		<view id="myVideo" class="content_video" wx:if="{{content && content.video_src!=''}}">
+			<video src="{{content.video_src}}" bindloadedmetadata="getVideoInfo" title="{{content.title}}" play-btn-position="center"
+				show-snapshot-button="true" danmu-list="{{danmuList}}" danmu-btn enable-danmu></video>
 		</view>
 	</view>
 	<!-- 评论框 -->

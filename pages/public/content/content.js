@@ -15,6 +15,8 @@ Page({
 		// videoSrc: "http://example.kkslide.fun/trip-in-guilin_v2.mp4", // 文章视频链接
 		textAreaFocus: false, // 文本框聚焦
 		comment: "", // 评论内容
+		danmuList: null, // 弹幕内容
+		videoDuration: null, // 视频长度
 		isFromSharePage: false, // 是否是从分享页面进来的
 		isOverShare: true
 	},
@@ -59,12 +61,12 @@ Page({
 		})
 	},
 	commentSubmit(e) {
-		if (this.data.comment.trim() == "" || this.data.comment.length > 140) {
+		if (this.data.comment.trim() == "" || this.data.comment.length > 140) { // 过滤无效评论内容
 			wx.showToast({
 				title: '请检查评论内容',
 				icon: 'error',
 				mask: true,
-				duration: 1500
+				duration: 1000
 			});
 		} else {
 			wx.showLoading({
@@ -84,6 +86,7 @@ Page({
 						wx.hideLoading();
 						return wx.showToast({
 							title: '评论不能太敏感噢',
+							duration: 1000
 						})
 					} else { // 2- 评论正常,可提交
 						if (app.globalData.userInfo) {
@@ -116,7 +119,10 @@ Page({
 			com_time: new Date().getTime(),
 			content_id: this.data.content._id,
 			guest_avatar: this.data.userInfo.avatarUrl,
-			guest_id: this.data.userInfo.nickName
+			guest_id: this.data.userInfo.nickName,
+			openid: app.globalData.openid,
+			auth_is_read: 0, // 作者是否已阅
+			auth_response: []
 		};
 		wx.cloud.callFunction({
 			name: "addHandler",
@@ -155,9 +161,9 @@ Page({
 					contentID: option.contentID
 				}
 			}).then(res => {
-				let CONTENT = res.result.list[0];
-				CONTENT.viewnum += 1;
 				if (res.result) {
+					let CONTENT = res.result.list[0];
+					CONTENT.viewnum += 1;
 					WxParse.wxParse('article', 'html', res.result.list[0].composition, that, 5);
 					this.setData({
 						content: CONTENT,
@@ -197,6 +203,31 @@ Page({
 				})
 			})
 		}
+	},
+	onReady() {
+		this.videoContext = wx.createVideoContext('myVideo')
+	},
+	getVideoInfo(e) {
+		this.setData({
+			videoDuration: e.detail.duration
+		});
+		let duration = e.detail.duration;
+		let partA = this.data.content.comment.map(v => {
+			return {
+				text: v.com_content,
+				time: parseInt(Math.random() * (duration / 2))
+			}
+		})
+		let partB = this.data.content.comment.map(v => {
+			return {
+				text: v.com_content,
+				time: parseInt(Math.random() * (duration - duration / 2) + duration / 2)
+			}
+		})
+		console.log(partA.concat(partB));
+		this.setData({
+			danmuList: partA.concat(partB)
+		})
 	},
 	onUnload: function (option) {
 		// 页面销毁时执行
