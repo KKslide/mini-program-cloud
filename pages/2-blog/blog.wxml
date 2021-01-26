@@ -21,7 +21,7 @@
 		<text class="fa fa-outdent"></text>
 	</view>
 </view>
-<scroll-view class='overflow' style='height:calc(100vh - {{navH}}px);padding-top:{{navH}}px;' scroll-y>
+<scroll-view class='overflow' style='height:calc(100vh - {{navH}}px);padding-top:{{navH}}px;' scroll-y scroll-top='{{topNum}}'>
 	<view class='hidden'>
 		<view class="blog_page">
 			<!-- 标题 -->

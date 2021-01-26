@@ -31,7 +31,35 @@ exports.main = async (event, context) => {
 
 // 分类集合获取
 async function CateGetHandler(event) {
-	return db.get()
+	return db.where({
+			name: "HOT"
+		})
+		.get()
+		.then(res => {
+			/**
+			 * 如果是空集合或者集合中没有"HOT"分类
+			 * 则添加该分类
+			 */
+			if (res.data.length != 0) {
+				return db.get()
+			} else {
+				return cloud.callFunction({
+						name: "addHandler",
+						data: {
+							collection: "category",
+							name: "HOT",
+							banner: event.banner || "http://example.kkslide.fun/banner.jpg",
+							addtime: event.addtime || new Date(),
+							edittime: event.edittime || new Date(),
+							index: event.index || 0
+						}
+					})
+					.then(addRes => {
+						console.log(addRes);
+						return db.get()
+					})
+			}
+		})
 }
 
 // 内容集合获取

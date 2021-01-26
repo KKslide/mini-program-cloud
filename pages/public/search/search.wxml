@@ -2,7 +2,7 @@
     <view class="search_form">
         <view class="search_input">
             <icon type="search" size="15" color="#666"></icon>
-            <input type="search" bindinput="inputHandler" value="{{searchVal}}" placeholder="type something here to search" auto-focus="true" confirm-type="search"/>
+            <input type="search" bindinput="inputHandler" bindconfirm="go2result" value="{{searchVal}}" placeholder="type something here to search" auto-focus="true" confirm-type="search"/>
             <icon type="cancel" size="15" color="#666" bindtap="clearValue"></icon>
         </view>
         <view class="search_cancel" bindtap="go2result">{{searchVal.length==0?"Cancel":"Search"}}</view>

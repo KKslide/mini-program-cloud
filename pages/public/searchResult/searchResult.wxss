@@ -28,6 +28,7 @@
 
 .content_page .search_res_list .search_res_list_item .search_res_list_item_left .search_res_list_item_info .search_res_list_item_info_icon {
   margin-right: 20rpx;
+  white-space: nowrap;
 }
 
 .content_page .search_res_list .search_res_list_item .search_res_list_item_left .search_res_list_item_info .search_res_list_item_info_icon text.fa {
@@ -49,7 +50,7 @@
   overflow: hidden;
   border-radius: 20rpx;
   width: 100%;
-  box-shadow: 1px 0px 14px rgba(0, 0, 0, 0.3);
+  box-shadow: 1px 0px 10px rgba(0, 0, 0, 0.2);
 }
 
 .content_page .hr {

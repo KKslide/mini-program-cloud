@@ -21,6 +21,7 @@
                     height: 30%;
                     .search_res_list_item_info_icon{
                         margin-right: 20rpx;
+                        white-space: nowrap;
                         text.fa{
                             margin-right: 10rpx;
                         }
@@ -39,7 +40,7 @@
                     overflow: hidden;
                     border-radius: 20rpx;
                     width:100%;
-                    box-shadow: 1px 0px 14px rgba(0, 0, 0, 0.3);
+                    box-shadow: 1px 0px 10px rgba(0, 0, 0, 0.2);
                 }
             }
         }

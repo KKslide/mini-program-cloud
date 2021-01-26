@@ -28,11 +28,17 @@ exports.main = async (event, context) => {
 	}
 }
 
-// 分类获取
+// 分类添加
 async function CateAddHandler(event) {
-	return db.where({
-		name: event.formData.name
-	}).get()
+	return db.add({
+		data: {
+			name: event.name,
+			banner: event.banner,
+			addtime: event.addtime,
+			edittime: event.edittime,
+			index: event.index || 0
+		}
+	})
 }
 
 // 文章评论

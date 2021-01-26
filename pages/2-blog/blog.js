@@ -41,7 +41,7 @@ Page({
 			title: 'loading...',
 			mask: true
 		});
-		wx.cloud.callFunction({
+		return wx.cloud.callFunction({
 			name: "getHandler",
 			data: {
 				collection: "content",
@@ -67,7 +67,7 @@ Page({
 
 	},
 	go2detail: function (e) { // 跳转详情页
-		let article_chosen = this.data.contentList.filter(v=>{
+		let article_chosen = this.data.contentList.filter(v => {
 			return v._id == e.currentTarget.dataset["param"];
 		})[0];
 		wx.navigateTo({
@@ -88,9 +88,9 @@ Page({
 			}
 		})
 	},
-	go2search: function(e){ // 去到搜索页
+	go2search: function (e) { // 去到搜索页
 		wx.navigateTo({
-		  url: '../public/search/search',
+			url: '../public/search/search',
 		})
 	},
 	switchCate(e) { // 点击tab栏
@@ -100,7 +100,11 @@ Page({
 			curActiveID: curCategoryData.name == "HOT" ? "HOT" : curCategoryData._id
 		});
 		wx.nextTick(_ => {
-			this.getContentList()
+			this.getContentList().then(_=>{
+				this.setData({
+					topNum: 0
+				})
+			})
 		});
 	},
 	scrollHandler() { // 页面滚动
