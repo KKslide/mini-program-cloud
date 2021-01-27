@@ -18,7 +18,88 @@ Page({
 		danmuList: null, // 弹幕内容
 		videoDuration: null, // 视频长度
 		isFromSharePage: false, // 是否是从分享页面进来的
+		modalVisibal: false, // 提示框的显示
 		isOverShare: true
+	},
+	onLoad: function (option) {
+		wx.showLoading({
+			title: "loading...",
+			mask: true
+		});
+		const that = this;
+		if (option.contentID) { // 如果是分享页进入
+			wx.cloud.callFunction({
+				name: "getHandler",
+				data: {
+					collection: "singleContent",
+					contentID: option.contentID
+				}
+			}).then(res => {
+				if (res.result) {
+					let CONTENT = res.result.list[0];
+					CONTENT.viewnum += 1;
+					WxParse.wxParse('article', 'html', res.result.list[0].composition, that, 5);
+					this.setData({
+						content: CONTENT,
+						isFromSharePage: true
+					})
+				} else {}
+				wx.hideLoading()
+			}).catch(err => {
+				console.log(err);
+				wx.hideLoading()
+			})
+		} else { // 如果是列表页点击进入
+			const eventChannel = this.getOpenerEventChannel();
+			// 接收文章数据
+			eventChannel.on('acceptDataFromOpenerPage', data => {
+				let contentData = data.data;
+				contentData.viewnum += 1; // 阅读数+1
+				// wxparse解析文章内容, 文档: https://github.com/icindy/wxParse
+				WxParse.wxParse('article', 'html', contentData.composition, that, 5);
+				this.setData({
+					content: contentData,
+					isFromSharePage: false
+				})
+				wx.cloud.callFunction({
+					name: "updateHandler",
+					data: {
+						collection: "view_num",
+						_id: contentData._id,
+						viewnum: contentData.viewnum
+					}
+				}).then(res => {
+					eventChannel.emit("updateContentList", contentData)
+				}).catch(err => {
+					console.log(err);
+				}).finally(_ => {
+					wx.hideLoading()
+				})
+			})
+		}
+	},
+	onUnload: function (option) { // 页面解绑
+		// 页面销毁时执行
+		console.log("页面销毁,当前viewnum: ", this.data.content.viewnum);
+		if (this.data.isFromSharePage) {
+			wx.cloud.callFunction({
+					name: "updateHandler",
+					data: {
+						collection: "view_num",
+						_id: this.data.content._id,
+						viewnum: this.data.content.viewnum
+					}
+				})
+				.then(res => {
+					console.log(res)
+				})
+				.catch(err => {
+					console.log(err)
+				})
+		}
+	},
+	onReady() { // 页面完成加载
+		this.videoContext = wx.createVideoContext('myVideo')
 	},
 	onShareAppMessage(res) { // 分享设置
 		// console.log(res);
@@ -60,7 +141,7 @@ Page({
 			delta: 1
 		})
 	},
-	commentSubmit(e) {
+	commentSubmit(e) { // 评论内容敏感测试接口
 		if (this.data.comment.trim() == "" || this.data.comment.length > 140) { // 过滤无效评论内容
 			wx.showToast({
 				title: '请检查评论内容',
@@ -133,120 +214,68 @@ Page({
 		}).then(res => {
 			if (res.result.errMsg == "collection.add:ok") {
 				const eventChannel = this.getOpenerEventChannel();
+				// 判断用户是否从 列表页 进入
 				if (JSON.stringify(eventChannel) != "{}") eventChannel.emit("updateContentList");
 				let tempCurComment = util.clone(this.data.content, 'obj');
-				tempCurComment["comment"].unshift(commentData);
+				tempCurComment["comment"].unshift(commentData); // 评论成功后,添加新的临时评论内容,减少网络请求
+				wx.hideLoading()
+				this.videoContext.pause()
 				this.setData({
 					comment: "",
 					content: tempCurComment,
+					modalVisibal: true
 				});
+			} else {
+
 			}
 		}).catch(err => {
 			console.log(err);
-		}).finally(_ => {
 			wx.hideLoading()
 		})
+		// 我也不晓得finally为什么在真机上会不靠谱
+		// .finally(_ => {
+		// 	wx.hideLoading()
+		// })
 	},
-	onLoad: function (option) {
-		wx.showLoading({
-			title: "loading...",
-			mask: true
-		});
-		const that = this;
-		if (option.contentID) { // 如果是分享页进入
-			wx.cloud.callFunction({
-				name: "getHandler",
-				data: {
-					collection: "singleContent",
-					contentID: option.contentID
-				}
-			}).then(res => {
-				if (res.result) {
-					let CONTENT = res.result.list[0];
-					CONTENT.viewnum += 1;
-					WxParse.wxParse('article', 'html', res.result.list[0].composition, that, 5);
-					this.setData({
-						content: CONTENT,
-						isFromSharePage: true
-					})
-				} else {}
-				wx.hideLoading()
-			}).catch(err => {
-				console.log(err);
-				wx.hideLoading()
-			})
-		} else { // 如果是列表页点击进入
-			const eventChannel = this.getOpenerEventChannel();
-			// 接收文章数据
-			eventChannel.on('acceptDataFromOpenerPage', data => {
-				let contentData = data.data;
-				contentData.viewnum += 1; // 阅读数+1
-				// wxparse解析文章内容, 文档: https://github.com/icindy/wxParse
-				WxParse.wxParse('article', 'html', contentData.composition, that, 5);
-				this.setData({
-					content: contentData,
-					isFromSharePage: false
-				})
-				wx.cloud.callFunction({
-					name: "updateHandler",
-					data: {
-						collection: "view_num",
-						_id: contentData._id,
-						viewnum: contentData.viewnum
-					}
-				}).then(res => {
-					eventChannel.emit("updateContentList", contentData)
-				}).catch(err => {
-					console.log(err);
-				}).finally(_ => {
-					wx.hideLoading()
-				})
-			})
-		}
-	},
-	onReady() {
-		this.videoContext = wx.createVideoContext('myVideo')
-	},
-	getVideoInfo(e) {
+	getVideoInfo(e) { // 获取视频信息
 		this.setData({
 			videoDuration: e.detail.duration
 		});
 		let duration = e.detail.duration;
-		let partA = this.data.content.comment.map(v => {
-			return {
-				text: v.com_content,
-				time: parseInt(Math.random() * (duration / 2))
-			}
-		})
-		let partB = this.data.content.comment.map(v => {
-			return {
-				text: v.com_content,
-				time: parseInt(Math.random() * (duration - duration / 2) + duration / 2)
-			}
-		})
-		console.log(partA.concat(partB));
+		let _comment = this.data.content.comment;
+		let _danmuList = new Array(8).fill("").map(_ => {
+				return _comment.concat(_comment) //.reduce()
+			}).reduce((pre, cur) => {
+				return pre.concat(cur)
+			})
+			.map(v => {
+				return {
+					text: v.com_content,
+					time: parseInt(Math.random() * (duration))
+				}
+			})
+		// console.log(_danmuList);
 		this.setData({
-			danmuList: partA.concat(partB)
+			danmuList: _danmuList
 		})
 	},
-	onUnload: function (option) {
-		// 页面销毁时执行
-		console.log("页面销毁,当前viewnum: ", this.data.content.viewnum);
-		if (this.data.isFromSharePage) {
-			wx.cloud.callFunction({
-					name: "updateHandler",
-					data: {
-						collection: "view_num",
-						_id: this.data.content._id,
-						viewnum: this.data.content.viewnum
-					}
+	SubscribeHandler(e) { // 订阅消息
+		wx.requestSubscribeMessage({
+			tmplIds: ['U7isDoq7uSGJ4f59-zEL5nYwUgofPQ_n2xR_ZL1JA_s'],
+			success: res => {
+				console.log(res);
+			},
+			fail: err => {
+				console.log(err);
+			},
+			complete: _ => {
+				this.setData({
+					modalVisibal: false
 				})
-				.then(res => {
-					console.log(res)
+				wx.showToast({
+					title: 'Thanks~',
 				})
-				.catch(err => {
-					console.log(err)
-				})
-		}
-	},
+			}
+		})
+	}
 })

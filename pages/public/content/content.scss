@@ -133,9 +133,42 @@ pre,
 						font-weight: lighter;
 					}
 
-					.hr {
-						margin: 15rpx 0;
-						width: 88%;
+					.hr.content_hr {
+						width: 100%;
+						margin: 15rpx 0 0 0 !important;
+					}
+				}
+				.comment_list_item_response{
+					box-sizing: border-box;
+					padding-left: 140rpx;
+					position: relative;
+					.response_text{
+						font-weight: lighter;
+						font-size: 25rpx;
+						text.response_auth{
+							font-weight: lighter;
+							font-size: 28rpx;
+						}
+						text.response_user{
+							font-weight: bold;
+							font-size: 30rpx;
+						}
+					}
+					.response_body{
+						.response_content{
+							font-size: 25rpx;
+							font-weight: lighter;
+							text-indent: 1em;
+							margin: 15rpx 0;
+						}
+						.response_time{
+							font-size: 20rpx;
+    						font-weight: lighter;
+						}
+					}
+					.hr.content_hr {
+						width: 100%;
+						margin: 15rpx 0 0 0 !important;
 					}
 				}
 			}
@@ -201,6 +234,52 @@ pre,
 			}
 		}
 	}
+
+	.contetn_response_modal{
+		position: fixed;
+		top:0;
+		left: 0;
+		width:100vw;
+		height: 100vh;
+		background-color: rgba(0, 0, 0, 0.75);
+		z-index: 99;
+        transition: opacity .3s;
+		.modal_dialog{
+			width: 80%;
+			border-radius: 20rpx;
+			border: 3px solid #000;
+			background-color: #fff;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			padding: 20rpx 5rpx;
+			.modal_tip{
+				padding: 20rpx 5rpx;
+				text-align: center;
+			}
+			.modal_tip:last-child{
+				padding: 30rpx 0;
+			}
+			// .modal_tip.en{}
+			// .modal_tip.cn{}
+			.modal_btn_ls{
+				display: flex;
+				justify-content: space-around;
+				padding: 20rpx 80rpx;
+				.modal_btn{
+					padding:10rpx 25rpx;
+					text-align: center;
+					border-radius: 18rpx;
+					border:2px solid #000;
+				}
+			}
+		}
+	}
+	.contetn_response_modal.hide {
+        opacity: 0;
+        z-index: -999;
+    }
 }
 
 // 分割线

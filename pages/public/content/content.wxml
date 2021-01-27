@@ -4,9 +4,10 @@
 <wxs module="dateFr" src="../../../filter/dateFr.wxs"></wxs>
 
 <view class="content_page">
-	<image src="{{content.category[0].banner}}" class="content_img" mode="widthFix">
-	</image>
+	<image src="{{content.category[0].banner}}" class="content_img" mode="widthFix"></image>
+	<!-- 文章标题 -->
 	<view class="content_title">{{content.title}}</view>
+	<!-- 文章简介 -->
 	<view class="content_info">
 		<view class="content_info_viewnum"><text class="fa fa-eye"></text>{{content.viewnum}}</view>
 		<text class="content_info_divide"> | </text>
@@ -18,10 +19,11 @@
 		<text class="content_info_divide"> | </text>
 		<view class="content_info_category"><text class="fa fa-tag"></text>{{content.category[0].name}}</view>
 	</view>
+	<!-- 文章内容 -->
 	<view class="content_article">
 		<template is="wxParse" data="{{wxParseData:article.nodes}}" />
-		<view id="myVideo" class="content_video" wx:if="{{content && content.video_src!=''}}">
-			<video src="{{content.video_src}}" bindloadedmetadata="getVideoInfo" title="{{content.title}}" play-btn-position="center"
+		<view class="content_video" wx:if="{{content && content.video_src!=''}}">
+			<video id="myVideo" src="{{content.video_src}}" bindloadedmetadata="getVideoInfo" title="{{content.title}}" play-btn-position="center"
 				show-snapshot-button="true" danmu-list="{{danmuList}}" danmu-btn enable-danmu></video>
 		</view>
 	</view>
@@ -47,7 +49,18 @@
 					<view class="comment_list_item_username">{{item.guest_id}}</view>
 					<view class="comment_list_item_msg">{{item.com_content}}</view>
 					<view class="comment_list_item_addtime">{{dateFr.dateFormat(item.com_time)}}</view>
-					<view class="hr"></view>
+					<view class="hr content_hr"></view>
+				</view>
+				<view class="comment_list_item_response" wx:if="{{item.auth_response.length!=0}}">
+					<view class="response_text">
+						<text class="response_auth">作者</text>
+						回复 
+						<text class="response_user">{{item.guest_id}}</text>:</view>
+					<view class="response_body" >
+						<view class="response_content">{{item.auth_response[0].reply_content}}</view>
+						<view class="response_time">{{dateFr.dateFormat(item.auth_response[0].reply_time)}}</view>
+					</view>
+					<view class="hr content_hr"></view>
 				</view>
 			</view>
 			<!-- 暂无评论 -->
@@ -77,6 +90,17 @@
 			<button open-type="share" class="fa">
 				<text class="fa fa-share-square-o"></text>
 			</button>
+		</view>
+	</view>
+	<!-- 接受订阅提示框 -->
+	<view class="contetn_response_modal {{modalVisibal?'':'hide'}}">
+		<view class="modal_dialog">
+			<view class="modal_tip en">Will U Accept My Response?</view>
+			<view class="modal_tip cn">你愿意接收我的回复通知吗?</view>
+			<view class="modal_btn_ls">
+				<view class="modal_btn no" bindtap="SubscribeHandler">NO</view>
+				<view class="modal_btn yes" bindtap="SubscribeHandler">YES</view>
+			</view>
 		</view>
 	</view>
 </view>
