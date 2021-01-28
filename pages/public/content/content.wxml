@@ -23,14 +23,16 @@
 	<view class="content_article">
 		<template is="wxParse" data="{{wxParseData:article.nodes}}" />
 		<view class="content_video" wx:if="{{content && content.video_src!=''}}">
-			<video id="myVideo" src="{{content.video_src}}" bindloadedmetadata="getVideoInfo" title="{{content.title}}" play-btn-position="center"
-				show-snapshot-button="true" danmu-list="{{danmuList}}" danmu-btn enable-danmu></video>
+			<video id="myVideo" src="{{content.video_src}}" bindloadedmetadata="getVideoInfo" title="{{content.title}}"
+				play-btn-position="center" show-snapshot-button="true" danmu-list="{{danmuList}}" danmu-btn
+				enable-danmu></video>
 		</view>
 	</view>
 	<!-- 评论框 -->
 	<view class="content_comment">
 		<form class="content_comment_form">
-			<textarea id="comment" focus="{{textAreaFocus}}" maxlength="140" bindinput="inputHandler" bindblur="blurHandler" value="{{comment}}" cols="30" rows="10" placeholder="欢迎留言">
+			<textarea id="comment" focus="{{textAreaFocus}}" maxlength="140" bindinput="inputHandler"
+				bindblur="blurHandler" value="{{comment}}" cols="30" rows="10" placeholder="欢迎留言">
 			<text>{{comment.length}}/140</text>
 		</textarea>
 			<view class="btn-area">
@@ -54,9 +56,10 @@
 				<view class="comment_list_item_response" wx:if="{{item.auth_response.length!=0}}">
 					<view class="response_text">
 						<text class="response_auth">作者</text>
-						回复 
-						<text class="response_user">{{item.guest_id}}</text>:</view>
-					<view class="response_body" >
+						回复：
+						<!-- <text class="response_user">{{item.guest_id}}</text>: -->
+					</view>
+					<view class="response_body">
 						<view class="response_content">{{item.auth_response[0].reply_content}}</view>
 						<view class="response_time">{{dateFr.dateFormat(item.auth_response[0].reply_time)}}</view>
 					</view>

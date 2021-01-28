@@ -19,7 +19,7 @@ Page({
 		videoDuration: null, // 视频长度
 		isFromSharePage: false, // 是否是从分享页面进来的
 		modalVisibal: false, // 提示框的显示
-		isOverShare: true
+		isOverShare: true, // 重写分享方法
 	},
 	onLoad: function (option) {
 		wx.showLoading({
@@ -70,11 +70,14 @@ Page({
 					}
 				}).then(res => {
 					eventChannel.emit("updateContentList", contentData)
+					wx.hideLoading()
 				}).catch(err => {
 					console.log(err);
-				}).finally(_ => {
 					wx.hideLoading()
 				})
+				// .finally(_ => {
+				// 	wx.hideLoading()
+				// })
 			})
 		}
 	},

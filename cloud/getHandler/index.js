@@ -5,6 +5,9 @@ cloud.init()
 
 let db = null
 
+let _ = cloud.database().command
+let $ = _.aggregate; // 聚合操作符
+
 // 云函数入口函数
 exports.main = async (event, context) => {
 	let c_name = event.collection; // 1- 数据库名
@@ -81,8 +84,15 @@ async function ContentGetHandler(event) {
 				})
 				.lookup({ // 关联评论列表
 					from: 'comment',
-					localField: '_id',
-					foreignField: 'content_id',
+					let: {
+						content_collection_id: '$_id' // content集合的_id字段
+					},
+					pipeline: $.pipeline() // 需要对评论时间做排序处理
+						.match(_.expr($.eq(['$content_id', '$$content_collection_id'])))
+						.sort({
+							com_time: -1
+						})
+						.done(),
 					as: 'comment',
 				})
 				.sort({ // 按照编辑时间排序
@@ -103,8 +113,15 @@ async function ContentGetHandler(event) {
 				})
 				.lookup({ // 关联评论列表
 					from: 'comment',
-					localField: '_id',
-					foreignField: 'content_id',
+					let: {
+						content_collection_id: '$_id' // content集合的_id字段
+					},
+					pipeline: $.pipeline() // 需要对评论时间做排序处理
+						.match(_.expr($.eq(['$content_id', '$$content_collection_id'])))
+						.sort({
+							com_time: -1
+						})
+						.done(),
 					as: 'comment',
 				})
 				.sort({ // 按照编辑时间排序
@@ -152,8 +169,15 @@ async function ContentGetHandler(event) {
 				})
 				.lookup({ // 关联评论列表
 					from: 'comment',
-					localField: '_id',
-					foreignField: 'content_id',
+					let: {
+						content_collection_id: '$_id' // content集合的_id字段
+					},
+					pipeline: $.pipeline() // 需要对评论时间做排序处理
+						.match(_.expr($.eq(['$content_id', '$$content_collection_id'])))
+						.sort({
+							com_time: -1
+						})
+						.done(),
 					as: 'comment',
 				})
 				.sort({ // 按照时间排序
@@ -189,8 +213,15 @@ async function MessageGetHandler(event) {
 			})
 			.lookup({ // 关联评论列表
 				from: 'comment',
-				localField: '_id',
-				foreignField: 'content_id',
+				let: {
+					content_collection_id: '$_id' // content集合的_id字段
+				},
+				pipeline: $.pipeline() // 需要对评论时间做排序处理
+					.match(_.expr($.eq(['$content_id', '$$content_collection_id'])))
+					.sort({
+						com_time: -1
+					})
+					.done(),
 				as: 'comment',
 			})
 			.end()
@@ -218,6 +249,8 @@ async function MessageGetHandler(event) {
 // 获取单篇文章
 async function GetSingleContent(event) {
 	let db = cloud.database().collection("content");
+	let _ = cloud.database().command
+	let $ = _.aggregate; // 聚合操作符
 	return db.aggregate()
 		.match({
 			_id: event.contentID
@@ -230,8 +263,17 @@ async function GetSingleContent(event) {
 		})
 		.lookup({ // 关联评论列表
 			from: 'comment',
-			localField: '_id',
-			foreignField: 'content_id',
+			// localField: '_id',
+			// foreignField: 'content_id',
+			let: {
+				content_collection_id: '$_id'
+			},
+			pipeline: $.pipeline()
+				.match(_.expr($.eq(['$content_id', '$$content_collection_id'])))
+				.sort({
+					com_time: -1
+				})
+				.done(),
 			as: 'comment',
 		})
 		.end()
@@ -240,6 +282,8 @@ async function GetSingleContent(event) {
 // 搜索文章
 async function ContentSearch(event) {
 	const db = cloud.database();
+	let _ = cloud.database().command
+	let $ = _.aggregate; // 聚合操作符
 	return db.collection("content")
 		.aggregate()
 		.match({
@@ -257,8 +301,15 @@ async function ContentSearch(event) {
 		})
 		.lookup({ // 关联评论列表
 			from: 'comment',
-			localField: '_id',
-			foreignField: 'content_id',
+			let: {
+				content_collection_id: '$_id' // content集合的_id字段
+			},
+			pipeline: $.pipeline() // 需要对评论时间做排序处理
+				.match(_.expr($.eq(['$content_id', '$$content_collection_id'])))
+				.sort({
+					com_time: -1
+				})
+				.done(),
 			as: 'comment',
 		})
 		.end()
