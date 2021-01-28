@@ -6,7 +6,8 @@ Page({
 		message: "", // 留言框的数据
 		socialMediaList: mediaData,
 		mediaDialogVisible: false, // 社交媒体弹窗
-		currentMediaLink: ""
+		modalVisibal: false, // 接收回复提示框的显示
+		currentMediaLink: "", // 社交媒体列表
 	},
 	onLoad() {
 		this.getMessageList()
@@ -90,7 +91,10 @@ Page({
 			addtime: new Date().getTime(),
 			guest_avatar: this.data.userInfo.avatarUrl,
 			guest_name: this.data.userInfo.nickName,
-			message: this.data.message.trim()
+			message: this.data.message.trim(),
+			openid: app.globalData.openid,
+			auth_is_read: 0, // 作者是否已阅
+			auth_response: []
 		}
 		wx.cloud.database().collection("message").add({
 			data: obj
@@ -98,7 +102,8 @@ Page({
 			if (res.errMsg == "collection.add:ok") {
 				this.getMessageList()
 				this.setData({
-					message: ""
+					message: "",
+					modalVisibal: true
 				})
 			}
 		})
@@ -139,5 +144,24 @@ Page({
 			mediaDialogVisible: false
 		})
 	},
-	onShareAppMessage() {}
+	onShareAppMessage() {},
+	SubscribeHandler(e) { // 订阅消息
+		wx.requestSubscribeMessage({
+			tmplIds: ['SFM32Vr2jBXvHar82Otokx2xKUxaWIqt1sQj6pKa6sE'],
+			success: res => {
+				console.log(res);
+			},
+			fail: err => {
+				console.log(err);
+			},
+			complete: _ => {
+				this.setData({
+					modalVisibal: false
+				})
+				wx.showToast({
+					title: 'Thanks~',
+				})
+			}
+		})
+	}
 })

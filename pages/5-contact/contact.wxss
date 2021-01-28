@@ -182,6 +182,56 @@
   z-index: -999;
 }
 
+.contact_container .contact_response_modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 99;
+  transition: opacity .3s;
+}
+
+.contact_container .contact_response_modal .modal_dialog {
+  width: 80%;
+  border-radius: 20rpx;
+  border: 3px solid #000;
+  background-color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20rpx 5rpx;
+}
+
+.contact_container .contact_response_modal .modal_dialog .modal_tip {
+  padding: 20rpx 5rpx;
+  text-align: center;
+}
+
+.contact_container .contact_response_modal .modal_dialog .modal_tip:last-child {
+  padding: 30rpx 0;
+}
+
+.contact_container .contact_response_modal .modal_dialog .modal_btn_ls {
+  display: flex;
+  justify-content: space-around;
+  padding: 20rpx 80rpx;
+}
+
+.contact_container .contact_response_modal .modal_dialog .modal_btn_ls .modal_btn {
+  padding: 10rpx 25rpx;
+  text-align: center;
+  border-radius: 18rpx;
+  border: 2px solid #000;
+}
+
+.contact_container .contact_response_modal.hide {
+  opacity: 0;
+  z-index: -999;
+}
+
 .contact_container .contact_msg_ul {
   margin-bottom: 15rpx;
 }
@@ -218,6 +268,43 @@
 .contact_container .contact_msg_ul .contact_msg_li .contact_msg_body .contact_msg_time {
   font-size: 23rpx;
   font-weight: lighter;
+}
+
+.contact_container .contact_msg_ul .contact_msg_li .contact_list_item_response {
+  box-sizing: border-box;
+  position: relative;
+}
+
+.contact_container .contact_msg_ul .contact_msg_li .contact_list_item_response .response_text {
+  font-weight: lighter;
+  font-size: 25rpx;
+}
+
+.contact_container .contact_msg_ul .contact_msg_li .contact_list_item_response .response_text text.response_auth {
+  font-weight: lighter;
+  font-size: 28rpx;
+}
+
+.contact_container .contact_msg_ul .contact_msg_li .contact_list_item_response .response_text text.response_user {
+  font-weight: bold;
+  font-size: 30rpx;
+}
+
+.contact_container .contact_msg_ul .contact_msg_li .contact_list_item_response .response_body .response_content {
+  font-size: 25rpx;
+  font-weight: lighter;
+  text-indent: 1em;
+  margin: 15rpx 0;
+}
+
+.contact_container .contact_msg_ul .contact_msg_li .contact_list_item_response .response_body .response_time {
+  font-size: 20rpx;
+  font-weight: lighter;
+}
+
+.contact_container .contact_msg_ul .contact_msg_li .contact_list_item_response .hr.content_hr {
+  width: 100%;
+  margin: 10rpx 0 !important;
 }
 
 .contact_container .contact_msg_ul .contact_msg_li:last-child {

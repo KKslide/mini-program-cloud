@@ -8,11 +8,13 @@
 	<view class="contact_form">
 		<form catchreset="formReset">
 			<view class="page-section page-section-gap">
-				<textarea class="contact_textarea" placeholder="Say something ~" name="massage_content" bindinput="inputHandler" value="{{message}}" maxlength="200" cols="30" rows="10"></textarea>
+				<textarea class="contact_textarea" placeholder="Say something ~" name="massage_content"
+					bindinput="inputHandler" value="{{message}}" maxlength="200" cols="30" rows="10"></textarea>
 				<text class="contact_msg_length">{{message.length}}/200</text>
 			</view>
 			<view class="btn-area">
-				<button style="margin: 30rpx 0" type="default" size="mini" formType="submit" open-type="getUserInfo" bindgetuserinfo="msgSubmit">确定</button>
+				<button style="margin: 30rpx 0" type="default" size="mini" formType="submit" open-type="getUserInfo"
+					bindgetuserinfo="msgSubmit">确定</button>
 			</view>
 		</form>
 	</view>
@@ -37,7 +39,8 @@
 	<view class="contact_social_media">
 		<view class="contact_social_media_title">Follow me on social media</view>
 		<view class="contact_social_media_list">
-			<text wx:for="{{socialMediaList}}" wx:key="name" class="fa fa-{{item.name}}" data-link="{{item}}" bindtap="openMediaLink"></text>
+			<text wx:for="{{socialMediaList}}" wx:key="name" class="fa fa-{{item.name}}" data-link="{{item}}"
+				bindtap="openMediaLink"></text>
 		</view>
 	</view>
 	<!-- 社交媒体链接弹窗 -->
@@ -51,8 +54,20 @@
 				<view class="media_link">{{currentMediaLink}}</view>
 				<view class="media_link_copy_btn" data-link="{{currentMediaLink}}" bindtap="copyHandler">COPY</view>
 				<view class="media_link_desc">
-					Because the 'web-view' tag reuires for HTTPS protocal, too expensive for me which means you might need to copy the link and open with a browser😜
+					Because the 'web-view' tag reuires for HTTPS protocal, too expensive for me which means you might
+					need to copy the link and open with a browser😜
 				</view>
+			</view>
+		</view>
+	</view>
+	<!-- 接受订阅提示框 -->
+	<view class="contact_response_modal {{modalVisibal?'':'hide'}}">
+		<view class="modal_dialog">
+			<view class="modal_tip en">Will U Accept My Response?</view>
+			<view class="modal_tip cn">你愿意接收我的回复通知吗?</view>
+			<view class="modal_btn_ls">
+				<view class="modal_btn no" bindtap="SubscribeHandler">NO</view>
+				<view class="modal_btn yes" bindtap="SubscribeHandler">YES</view>
 			</view>
 		</view>
 	</view>
@@ -60,11 +75,26 @@
 	<!-- 留言列表 -->
 	<view class="contact_msg_ul">
 		<view class="contact_msg_li" wx:for="{{dataList}}" wx:key="key">
+			<!-- 留言 -->
 			<view class="contact_msg_body">
 				<image class="contact_msg_avatar" src="{{item.guest_avatar}}" mode="cover"></image>
 				<view class="contact_msg_head">{{item.guest_name}}</view>
 				<view class="contact_msg_content">{{item.message}}</view>
 				<view class="contact_msg_time">{{dateFr.dateFormat(item.addtime)}}</view>
+			</view>
+			<!-- 回复 -->
+			<view class="contact_list_item_response" wx:if="{{item.auth_response.length!=0}}">
+				<view class="hr content_hr"></view>
+				<view class="response_text">
+					<text class="response_auth">KK_(+.-)</text>
+					回复：
+					<!-- <text class="response_user">{{item.guest_id}}</text>: -->
+				</view>
+				<view class="response_body">
+					<view class="response_content">{{item.auth_response[0].reply_content}}</view>
+					<view class="response_time">{{dateFr.dateFormat(item.auth_response[0].reply_time)}}</view>
+				</view>
+				<!-- <view class="hr content_hr"></view> -->
 			</view>
 		</view>
 		<view class="contact_msg_li">there is no more comments</view>
