@@ -5,20 +5,24 @@
 	<view class="about_intro front_end">
 		<view class="about_intro_sub_title">Front-End</view>
 		<view class="about_intro_content">
-			I`m A Three-year working experience front end engineer, I started to get into this industrial in 2013. So
-			then we had a course - 'HTML & CSS Web Design' during college which impressed me, that was so coool and so
-			amazing!!! It turned out I was a visual effects lover. So I tried hard to teach myself html and css and
-			catch up with JavaScript. I want to be a UI designer and front end engineer. That`s the motivation that
-			keeps me moving on.
+			I`m a {{year}}-year working experience front end engineer, I started to get into this industrial in 2013.
+			Back
+			then college we had a course - 'HTML & CSS Web Design' which impressed me so much, that was so coool and so
+			amazing!!! It turned out I was a visual effects lover. So I tried hard to teach myself HTML and CSS and
+			catch up with JavaScript. I want to be a UI designer and front end engineer. That`s the motivation
+			keeps me moving on in my present career life.
 		</view>
 	</view>
 	<!-- 兴趣爱好 -->
 	<view class="about_intro hobby">
 		<view class="about_intro_sub_title">My Life</view>
 		<view class="about_intro_content">
-			Besides Coding, Basketball and RollingSkate fullfill my spare time. I dreamed of being a big Star when I was
-			a kid 🤣but I stop growing taller when I was 18. So I started to try something else to see if I could get a
-			little bit taller, and I bought myself a pair of skating shoes, and that changed my whole life..
+			Besides Coding, Basketball and RollingSkate fullfill my spare time. I dreamed of being a BasketBall Player
+			when I was
+			a kid 🤣but I stop growing any more taller after 18. So I started to try something else to see if I could
+			get any
+			little bit taller, I bought myself a pair of skating shoes and tried to learn RollingSkate, that thing
+			changed my whole life..
 		</view>
 	</view>
 	<!-- 个人技能树 -->
@@ -147,7 +151,12 @@
 	<view class="about_intro next">
 		<view class="about_intro_sub_title">Me In 50 Years Later</view>
 		<view class="about_intro_content">
-			<image class="about_avatar" src="http://kkslide.fun/img/profil.9c2d3698.jpg" mode="widthFix" lazy-load="true"></image>
+			<image class="about_avatar" src="http://kkslide.fun/img/profil.9c2d3698.jpg"
+				data-src="http://kkslide.fun/img/profil.9c2d3698.jpg" mode="widthFix" lazy-load="true"
+				bindtap="previewMyPhoto"></image>
+			<!-- <image class="about_avatar" src="https://6b61-kangyouknowwho-8ge6apb585a940c6-1304576484.tcb.qcloud.la/imgs/wechat_payment.jpg?sign=28286c235d066c46c29ff9ab8bd15e76&t=1611904532"
+				data-src="https://6b61-kangyouknowwho-8ge6apb585a940c6-1304576484.tcb.qcloud.la/imgs/wechat_payment.jpg?sign=28286c235d066c46c29ff9ab8bd15e76&t=1611904532" mode="widthFix" lazy-load="true"
+				show-menu-by-longpress="{{true}}"></image> -->
 		</view>
 	</view>
 	<!-- 头像 -->

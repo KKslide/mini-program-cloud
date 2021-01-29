@@ -29,7 +29,32 @@ exports.main = async (event, context) => {
 		case "message": {
 			return MessageGetHandler(event)
 		}
+		case "getUnRead": {
+			return getUnRead(event)
+		}
 	}
+}
+
+// 获取未读消息数量
+async function getUnRead(event) {
+	db = cloud.database()
+	return db.collection("message")
+		.aggregate()
+		.match(_.expr($.eq(["$auth_is_read", 0])))
+		.count("msg_unread_count")
+		.lookup({
+			from: "comment",
+			pipeline: $.pipeline()
+				.match(_.expr($.eq(["$auth_is_read", 0])))
+				.count("comment_unread_count")
+				.done(),
+			as: "comment_unread_count"
+		})
+		.project({
+			msg_unread_count: 1, // 留言未读数量
+			comment_unread_count: $.arrayElemAt(['$comment_unread_count.comment_unread_count',0]) // 文章评论未读数量
+		})
+		.end()
 }
 
 // 分类集合获取
