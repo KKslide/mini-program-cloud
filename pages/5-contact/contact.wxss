@@ -232,6 +232,26 @@
   z-index: -999;
 }
 
+.contact_container .contact_btn {
+  position: fixed;
+  right: 20rpx;
+  bottom: 30vh;
+  z-index: 999999;
+}
+
+.contact_container .contact_btn button {
+  border-radius: 50%;
+  width: 100rpx;
+  height: 100rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact_container .contact_btn button text.fa {
+  font-size: 50rpx;
+}
+
 .contact_container .contact_msg_ul {
   margin-bottom: 15rpx;
 }

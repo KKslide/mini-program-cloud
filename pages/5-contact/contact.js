@@ -163,5 +163,9 @@ Page({
 				})
 			}
 		})
+	},
+	handleContact(e) { // 客服消息
+		console.log(e.detail.path)
+		console.log(e.detail.query)
 	}
 })

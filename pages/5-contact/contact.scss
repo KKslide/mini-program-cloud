@@ -249,6 +249,24 @@
         z-index: -999;
     }
 
+    .contact_btn{
+        position: fixed;
+        right: 20rpx;
+        bottom: 30vh;
+        z-index: 999999;
+        button{
+            border-radius: 50%;
+            width: 100rpx;
+            height: 100rpx;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text.fa{
+                font-size: 50rpx;
+            }
+        }
+    }
+
     // 留言列表
     .contact_msg_ul {
         margin-bottom: 15rpx;

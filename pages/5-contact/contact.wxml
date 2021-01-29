@@ -71,6 +71,12 @@
 			</view>
 		</view>
 	</view>
+	<!-- 客服按钮 -->
+	<view class="contact_btn">
+		<button open-type="contact" bindcontact="handleContact">
+			<text class="fa fa-headphones"></text>
+		</button>
+	</view>
 	<view class="hr"></view>
 	<!-- 留言列表 -->
 	<view class="contact_msg_ul">

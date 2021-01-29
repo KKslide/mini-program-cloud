@@ -18,19 +18,6 @@ Page({
 				})
 			})
 	},
-	onReady() {
-		wx.cloud.callFunction({
-				name: "getHandler",
-				data: {
-					collection: "getUnRead"
-				}
-			}).then(res => {
-				console.log(res)
-			})
-			.catch(err => {
-				console.log(err);
-			})
-	},
 	downloadHandler() { // 下载简历
 		wx.cloud.downloadFile({
 			fileID: this.data.resumeUrl, // 文件 ID
