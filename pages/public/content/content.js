@@ -153,6 +153,9 @@ Page({
 				duration: 1000
 			});
 		} else {
+			this.videoContext.sendDanmu({
+				text: this.data.comment.trim()
+			})
 			wx.showLoading({
 				title: 'loading',
 			});
@@ -222,7 +225,7 @@ Page({
 				let tempCurComment = util.clone(this.data.content, 'obj');
 				tempCurComment["comment"].unshift(commentData); // 评论成功后,添加新的临时评论内容,减少网络请求
 				wx.hideLoading()
-				this.videoContext.pause()
+				// this.videoContext.pause()
 				this.setData({
 					comment: "",
 					content: tempCurComment,

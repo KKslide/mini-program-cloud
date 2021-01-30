@@ -18,16 +18,42 @@ Page({
 				})
 			})
 	},
+	onReady() {
+		wx.cloud.callFunction({
+				name: "getHandler",
+				data: {
+					collection: "message",
+					pageNo: 1,
+					pageSize: 3,
+					auth_is_read: "1",
+					guest_name: "",
+					rangeTime: [],
+					message: ""
+				}
+			})
+			.then(res => {
+				console.log(res);
+			})
+	},
 	downloadHandler() { // 下载简历
+		wx.showLoading({
+			title: 'loading...',
+		})
 		wx.cloud.downloadFile({
 			fileID: this.data.resumeUrl, // 文件 ID
-			success: res => {
-				// 返回临时文件路径
-				wx.openDocument({
-					filePath: res.tempFilePath,
+			success: fileRes => {
+				wx.hideLoading({
+					success: (res) => {
+						// 返回临时文件路径
+						wx.openDocument({
+							filePath: fileRes.tempFilePath,
+						})
+					},
 				})
 			},
-			fail: console.error
+			fail: (err => {
+				console.log(err);
+			})
 		})
 
 	},

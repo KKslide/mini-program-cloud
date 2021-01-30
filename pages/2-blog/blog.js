@@ -13,11 +13,13 @@ Page({
 		noContent: false, // 没有当前栏内容flag
 		isOverShare: false,
 	},
-	getCategoryList(callback) { // 获取分类
+	getCategoryList(callback) { // 获取分类-无权限要求,直接获取,不调用云函数
 		let db = wx.cloud.database().collection("category");
 		db.field({
 			_id: true,
 			name: true
+		}).where({
+			"isShow": "1"
 		}).orderBy("index", "asc").get({
 			success: res => {
 				let _curActiveID = res.data.filter(v => {
@@ -100,7 +102,7 @@ Page({
 			curActiveID: curCategoryData.name == "HOT" ? "HOT" : curCategoryData._id
 		});
 		wx.nextTick(_ => {
-			this.getContentList().then(_=>{
+			this.getContentList().then(_ => {
 				this.setData({
 					topNum: 0
 				})
