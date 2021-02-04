@@ -21,8 +21,8 @@
 	</view>
 	<!-- 文章内容 -->
 	<view class="content_article">
-		<!-- <template is="wxParse" data="{{wxParseData:article.nodes}}" /> -->
-		<towxml nodes="{{article}}"/>
+		<template is="wxParse" data="{{wxParseData:article.nodes}}" />
+		<!-- <towxml nodes="{{article}}"/> -->
 		<view class="content_video" wx:if="{{content && content.video_src!=''}}">
 			<video id="myVideo" src="{{content.video_src}}" bindloadedmetadata="getVideoInfo" title="{{content.title}}"
 				play-btn-position="center" show-snapshot-button="true" danmu-list="{{danmuList}}" danmu-btn

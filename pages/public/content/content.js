@@ -56,11 +56,11 @@ Page({
 				let contentData = data.data;
 				contentData.viewnum += 1; // 阅读数+1
 				// wxparse解析文章内容, 文档: https://github.com/icindy/wxParse
-				// WxParse.wxParse('article', 'html', contentData.composition, that, 5);
-				let transformedWXML = app.towxml(contentData.composition,"html")
+				WxParse.wxParse('article', 'html', contentData.composition, that, 5);
+				// let transformedWXML = app.towxml(contentData.composition,"markdown")
 				this.setData({
 					content: contentData,
-					article: transformedWXML,
+					// article: transformedWXML,
 					isFromSharePage: false
 				})
 				wx.cloud.callFunction({

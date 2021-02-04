@@ -66,6 +66,12 @@ pre,
 		.wxParse-li-text {
 			overflow: hidden;
 		}
+
+		// .h2w__font,
+		// .h2w__strike,
+		// .h2w_p {
+		// 	display: inline;
+		// }
 	}
 
 	.content_comment {
@@ -76,11 +82,12 @@ pre,
 				border: 1px solid #ccc;
 				padding: 3%;
 				position: relative;
-				text{
+
+				text {
 					position: absolute;
 					right: 15rpx;
 					bottom: 10rpx;
-					color:#666;
+					color: #666;
 				}
 			}
 
@@ -101,7 +108,7 @@ pre,
 					padding-left: 140rpx;
 					position: relative;
 
-					.comment_none_tip{
+					.comment_none_tip {
 						font-size: 25rpx;
 						font-weight: lighter;
 					}
@@ -138,43 +145,51 @@ pre,
 						margin: 15rpx 0 0 0 !important;
 					}
 				}
-				.comment_list_item_response{
+
+				.comment_list_item_response {
 					box-sizing: border-box;
 					padding-left: 140rpx;
 					position: relative;
-					.response_text{
+
+					.response_text {
 						font-weight: lighter;
 						font-size: 25rpx;
-						text.response_auth{
+
+						text.response_auth {
 							font-weight: lighter;
 							font-size: 28rpx;
 						}
-						text.response_user{
+
+						text.response_user {
 							font-weight: bold;
 							font-size: 30rpx;
 						}
 					}
-					.response_body{
-						.response_content{
+
+					.response_body {
+						.response_content {
 							font-size: 25rpx;
 							font-weight: lighter;
 							text-indent: 1em;
 							margin: 15rpx 0;
 						}
-						.response_time{
+
+						.response_time {
 							font-size: 20rpx;
-    						font-weight: lighter;
+							font-weight: lighter;
 						}
 					}
+
 					.hr.content_hr {
 						width: 100%;
 						margin: 15rpx 0 0 0 !important;
 					}
 				}
 			}
-			.comment_list_li:last-child{
-				.comment_list_item_body{
-					.hr{
+
+			.comment_list_li:last-child {
+				.comment_list_item_body {
+					.hr {
 						display: none;
 					}
 				}
@@ -226,7 +241,8 @@ pre,
 			.fa {
 				font-size: 45rpx;
 			}
-			button.fa{
+
+			button.fa {
 				width: 45rpx;
 				height: 45rpx;
 				padding: 0;
@@ -235,16 +251,17 @@ pre,
 		}
 	}
 
-	.contetn_response_modal{
+	.contetn_response_modal {
 		position: fixed;
-		top:0;
+		top: 0;
 		left: 0;
-		width:100vw;
+		width: 100vw;
 		height: 100vh;
 		background-color: rgba(0, 0, 0, 0.75);
 		z-index: 99;
-        transition: opacity .3s;
-		.modal_dialog{
+		transition: opacity .3s;
+
+		.modal_dialog {
 			width: 80%;
 			border-radius: 20rpx;
 			border: 3px solid #000;
@@ -254,32 +271,37 @@ pre,
 			left: 50%;
 			transform: translate(-50%, -50%);
 			padding: 20rpx 5rpx;
-			.modal_tip{
+
+			.modal_tip {
 				padding: 20rpx 5rpx;
 				text-align: center;
 			}
-			.modal_tip:last-child{
+
+			.modal_tip:last-child {
 				padding: 30rpx 0;
 			}
+
 			// .modal_tip.en{}
 			// .modal_tip.cn{}
-			.modal_btn_ls{
+			.modal_btn_ls {
 				display: flex;
 				justify-content: space-around;
 				padding: 20rpx 80rpx;
-				.modal_btn{
-					padding:10rpx 25rpx;
+
+				.modal_btn {
+					padding: 10rpx 25rpx;
 					text-align: center;
 					border-radius: 18rpx;
-					border:2px solid #000;
+					border: 2px solid #000;
 				}
 			}
 		}
 	}
+
 	.contetn_response_modal.hide {
-        opacity: 0;
-        z-index: -999;
-    }
+		opacity: 0;
+		z-index: -999;
+	}
 }
 
 // 分割线
