@@ -1,0 +1,40 @@
+<!-- 引入时间格式化模块 -->
+<wxs module="dateFr" src="../../../filter/dateFr.wxs"></wxs>
+
+<template name="type_default">
+    <view class="blog_list">
+        <view class="blog_item" wx:for="{{contentList}}" wx:key="_id">
+            <!-- 文章标题 -->
+            <view class="blog_title">{{item.title}}</view>
+            <!-- 文章信息 -->
+            <view class="blog_info">
+                <view class="blog_info_viewnum"><text class="fa fa-eye"></text>{{item.viewnum}}</view>
+                <text class="blog_info_divide"> | </text>
+                <view class="blog_info_comment_num"><text class="fa fa-comment-o"></text>{{item.comment.length}}</view>
+                <text class="blog_info_divide"> | </text>
+                <view class="blog_info_addtime"><text class="fa fa-clock-o"></text>{{dateFr.dateFormat(item.addtime)}}
+                </view>
+                <text class="blog_info_divide"> | </text>
+                <view class="blog_info_category"><text class="fa fa-tag"></text>{{item.category[0].name}}</view>
+            </view>
+            <!-- 文章描述 -->
+            <view class="blog_description">
+                <text>{{item.description}}</text>
+            </view>
+            <!-- 文章背景图 -->
+            <view class="blog_img blog_video" data-param="{{item._id}}" bindtap="go2detail">
+                <text class="fa fa-play-circle-o" wx:if="{{item.video_src!=''}}"></text>
+                <image src="{{item.poster}}" mode="aspectFill" lazy-load="true"></image>
+            </view>
+            <!-- 文章链接 -->
+            <view class="blog_link" data-param="{{item._id}}" bindtap="go2detail">CHECK >></view>
+        </view>
+        <view class="blog_item" wx:if="{{noContent}}">
+            <view class="blog_list_empty">
+                <text>THERE`S NOTHING HERE...\n</text>
+                <text>\n</text>
+                <text>PLAESE CHECK LATER</text>
+            </view>
+        </view>
+    </view>
+</template>

@@ -10,6 +10,7 @@ Page({
 		contentList: [],
 		curActiveClass: 'HOT',
 		curActiveID: null, // 当前navigation的ID号
+		listType: null, // 当前分类的展示类型
 		noContent: false, // 没有当前栏内容flag
 		isOverShare: false,
 	},
@@ -17,7 +18,8 @@ Page({
 		let db = wx.cloud.database().collection("category");
 		db.field({
 			_id: true,
-			name: true
+			name: true,
+			list_type: true
 		}).where({
 			"isShow": "1"
 		}).orderBy("index", "asc").get({
@@ -25,9 +27,26 @@ Page({
 				let _curActiveID = res.data.filter(v => {
 					return v.name == this.data.curActiveClass;
 				});
+				let _listType = null;
+				switch (_curActiveID[0]["list_type"]) {
+					case "1":
+						_listType = "type_1"
+						break;
+					case "2":
+						_listType = "type_2"
+						break;
+					case "3":
+						_listType = "type_3"
+						break;
+
+					default:
+						_listType = "type_default"
+						break;
+				}
 				this.setData({
 					categoryList: res.data,
-					curActiveID: _curActiveID[0]["name"] == "HOT" ? "HOT" : _curActiveID[0]["_id"]
+					curActiveID: _curActiveID[0]["name"] == "HOT" ? "HOT" : _curActiveID[0]["_id"],
+					listType: _listType
 				});
 				wx.nextTick(_ => {
 					if (callback) callback()
@@ -99,8 +118,10 @@ Page({
 		let curCategoryData = e.currentTarget.dataset.cate;
 		this.setData({
 			curActiveClass: curCategoryData.name,
-			curActiveID: curCategoryData.name == "HOT" ? "HOT" : curCategoryData._id
+			curActiveID: curCategoryData.name == "HOT" ? "HOT" : curCategoryData._id,
+			listType: "type_1"
 		});
+		console.log(curCategoryData);
 		wx.nextTick(_ => {
 			this.getContentList().then(_ => {
 				this.setData({
@@ -131,41 +152,6 @@ Page({
 		this.setData({
 			nbLoading: false
 		})
-	},
-
-	/**
-	 * 生命周期函数--监听页面显示
-	 */
-	onShow: function () {
-
-	},
-
-	/**
-	 * 生命周期函数--监听页面隐藏
-	 */
-	onHide: function () {
-
-	},
-
-	/**
-	 * 生命周期函数--监听页面卸载
-	 */
-	onUnload: function () {
-
-	},
-
-	/**
-	 * 页面相关事件处理函数--监听用户下拉动作
-	 */
-	onPullDownRefresh: function () {
-		// console.log("bottom !!!!");
-	},
-
-	/**
-	 * 页面上拉触底事件的处理函数
-	 */
-	onReachBottom: function () {
-		console.log("!!!!!!!");
 	},
 
 	/**

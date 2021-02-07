@@ -13,22 +13,22 @@
 			display: inline-block;
 			height: 30px;
 			line-height: 30px;
-			font-size: 20px;
+			font-size: 15px;
 			font-weight: lighter;
 			text-align: center;
-			padding: 8px 15px;
+			padding: 5px 15px;
 			border-bottom: 2px solid #fff;
 			color: #000;
 			transition: all .3s;
 		}
 
 		.blog_cate_list_item:last-child {
-			margin-right: 60px;
+			margin-right: 40px;
 		}
 
 		.blog_cate_list_item.active {
 			font-weight: bold;
-			font-size: 20px;
+			font-size: 15px;
 			border-bottom: 2px solid #000;
 			background: rgba(0, 0, 0, .5);
 			color: #FFF;
@@ -36,9 +36,9 @@
 	}
 
 	.blog_cate_list_more {
-		width: 60px;
-		height: 46px;
-		line-height: 46px;
+		width: 40px;
+		height: 43px;
+		line-height: 43px;
 		background: linear-gradient(to right, rgba(255, 255, 255, .85) 20%, rgba(255, 255, 255, 1) 100%);
 		// background: rgba(255, 255, 255, .8);
 		// box-shadow: 1px 1px 5px rgba(255, 255, 255, .8);
@@ -57,19 +57,22 @@
 
 page {
 	.blog_page {
-		padding: 120rpx 25rpx;
+		padding: 105rpx 25rpx 120rpx 25rpx;
 
 		.blog_list {
-			box-shadow: 0 5px 10px rgba(0, 0, 0, .5);
-			padding: 20rpx;
+			// box-shadow: 0 5px 10px rgba(0, 0, 0, .5);
+			padding: 10rpx;
 
 			.blog_item {
 				border-bottom: 1px solid #ddd;
-				padding-bottom: 20rpx;
+				// padding-bottom: 20rpx;
 				margin-bottom: 40rpx;
+				box-shadow: 0 3px 9px rgba(0, 0, 0, .2);
+				padding: 20rpx;
+				border-radius: 10rpx;
 
 				.blog_title {
-					font-size: 50rpx;
+					font-size: 40rpx;
 					font-weight: bold;
 					white-space: nowrap;
 					text-overflow: ellipsis;
@@ -114,6 +117,7 @@ page {
 
 					image {
 						width: 100%;
+						height:26vh;
 						z-index:-1;
     					vertical-align: top;
 						border-radius: 15rpx;

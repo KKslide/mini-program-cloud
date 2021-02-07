@@ -116,6 +116,7 @@ async function CateGetHandler(event) {
 							banner: event.banner || "http://example.kkslide.fun/banner.jpg",
 							addtime: event.addtime || new Date(),
 							edittime: event.edittime || new Date(),
+							list_type: '0', // 分类展示类型
 							index: event.index || 0
 						}
 					})
