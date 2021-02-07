@@ -143,7 +143,15 @@ Page({
 	},
 	backHandler() { // 返回上一页
 		wx.navigateBack({
-			delta: 1
+			delta: 1,
+			fail: err => {
+				wx.switchTab({
+					url: '/pages/1-index/index',
+					fail: err2 => {
+						console.log(err2);
+					}
+				})
+			}
 		})
 	},
 	commentSubmit(e) { // 评论内容敏感测试接口

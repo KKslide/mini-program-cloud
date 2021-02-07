@@ -1,0 +1,57 @@
+<!-- 引入时间格式化模块 -->
+<wxs module="dateFr" src="../../../filter/dateFr.wxs"></wxs>
+
+<template name="type_2">
+    <view class="blog_list type_2">
+        <!-- wx:for="{{contentList}}" wx:key="_id"  data-param="{{item._id}}" bindtap="go2detail" -->
+        <view class="blog_item type_2" wx:for="{{contentList}}" wx:key="_id"  data-param="{{item._id}}" bindtap="go2detail">
+            <view class="blog_item_upon">
+                <view class="blog_item_addtime">
+                    <text class="fa fa-clock-o"></text>
+                    {{dateFr.dateFormat(item.addtime)}}
+                </view>
+            </view>
+            <view class="blog_item_bottom">
+                <view class="blog_item_info">
+                    <view class="blog_item_info_upon">
+                        <view class="blog_item_title">
+                            <text>{{item.title}}</text>
+                        </view>
+                        <view class="blog_item_desc">
+                            <text>{{item.description}}</text>
+                        </view>
+                    </view>
+                    <view class="blog_item_info_bottom">
+                        <view class="blog_item_info_viewnum">
+                            <text class="fa fa-eye"></text>
+                            {{item.viewnum}}
+                        </view>
+                        |
+                        <view class="blog_item_info_comment">
+                            <text class="fa fa-comment-o"></text>
+                            {{item.comment.length}}
+                        </view>
+                        |
+                        <view class="blog_item_info_tag">
+                            <text class="fa fa-tag"></text>
+                            {{item.category[0]['name']}}
+                        </view>
+                    </view>
+                </view>
+                <view class="blog_item_image">
+                    <text class="fa fa-play-circle-o" wx:if="{{item.video_src!=''}}"></text>
+                    <image src="{{item.poster}}"
+                        mode="aspectFill" lazy-load="true"></image>
+                </view>
+            </view>
+        </view>
+        <!-- 无内容提示 -->
+        <view class="blog_item" wx:if="{{noContent}}">
+            <view class="blog_list_empty">
+                <text>THERE`S NOTHING HERE...\n</text>
+                <text>\n</text>
+                <text>PLAESE CHECK LATER</text>
+            </view>
+        </view>
+    </view>
+</template>

@@ -1,3 +1,55 @@
+<!-- 引入时间格式化模块 -->
+<wxs module="dateFr" src="../../../filter/dateFr.wxs"></wxs>
+
 <template name="type_1">
-    <view>TYPE-1</view>
+    <view class="blog_list">
+        <view class="blog_item type_1" wx:for="{{contentList}}" wx:key="_id"  data-param="{{item._id}}" bindtap="go2detail">
+            <!-- 文章背景图 -->
+            <view class="blog_image">
+                <text class="fa fa-play-circle-o" wx:if="{{item.video_src!=''}}"></text>
+                <image src="{{item.poster}}" mode="aspectFill" lazy-load="true"></image>
+            </view>
+            <view class="blog_info">
+                <view class="blog_info_top">
+                    <!-- 文章标题 -->
+                    <view class="blog_info_title">
+                        <text>{{item.title}}</text>
+                    </view>
+                    <!-- 文章描述 -->
+                    <view class="blog_info_desc">
+                        <text>{{item.description}}</text>
+                    </view>
+                </view>
+                <view class="blog_info_bottom">
+                    <view class="blog_info_viewnum">
+                        <text class="fa fa-eye"></text>
+                        {{item.viewnum}}
+                    </view>
+                    |
+                    <view class="blog_info_comment">
+                        <text class="fa fa-comment-o"></text>
+                        {{item.comment.length}}
+                    </view>
+                    |
+                    <view class="blog_info_addtime">
+                        <text class="fa fa-clock-o"></text>
+                        {{dateFr.dateFormat(item.addtime,"YYYY-MM-dd")}}
+                    </view>
+                    <view class="fa blog_info_share" >
+                        <button open-type="share" class="fa" data-id="{{item._id}}" data-poster="{{item.poster}}" data-title="{{item.title}}" catchtap="shareHandler">
+                            <text class="fa fa-share-square-o"></text>
+                        </button>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <!-- 无内容提示 -->
+        <view class="blog_item" wx:if="{{noContent}}">
+            <view class="blog_list_empty">
+                <text>THERE`S NOTHING HERE...\n</text>
+                <text>\n</text>
+                <text>PLAESE CHECK LATER</text>
+            </view>
+        </view>
+    </view>
 </template>

@@ -1,8 +1,9 @@
 <!-- 引入时间格式化模块 -->
-<wxs module="dateFr" src="../../filter/dateFr.wxs"></wxs>
+<!-- <wxs module="dateFr" src="../../filter/dateFr.wxs"></wxs> -->
 
 <import src="./list_type/type_default.wxml"></import>
 <import src="./list_type/type_1.wxml"></import>
+<import src="./list_type/type_2.wxml"></import>
 
 <!-- 自定义头部 -->
 <view class='nav bg-black' style='height:{{navH}}px;'>
