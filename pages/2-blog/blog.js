@@ -101,7 +101,7 @@ Page({
 	},
 	switchCate(e) { // 点击tab栏
 		let curCategoryData = e.currentTarget.dataset.cate;
-		if(curCategoryData.name == this.data.curActiveClass) return;
+		if (curCategoryData.name == this.data.curActiveClass) return;
 		this.setData({
 			curActiveClass: curCategoryData.name,
 			curActiveID: curCategoryData.name == "HOT" ? "HOT" : curCategoryData._id
@@ -130,9 +130,9 @@ Page({
 			case "2":
 				_listType = "type_2" // 图文型
 				break;
-			// case "3":
-			// 	_listType = "type_3" // 日志型
-			// 	break;
+			case "3":
+				_listType = "type_3" // 日志型
+				break;
 			default:
 				_listType = "type_default" // 默认混合型
 				break;

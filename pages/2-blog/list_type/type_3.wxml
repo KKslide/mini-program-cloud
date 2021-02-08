@@ -1,0 +1,36 @@
+<!-- 引入时间格式化模块 -->
+<wxs module="dateFr" src="../../../filter/dateFr.wxs"></wxs>
+
+<template name="type_3">
+    <view class="content">
+        <view class="left">
+            <block wx:for="{{contentList}}" wx:key="_id">
+                <template is="item" data="{{...item}}" wx:if="{{index%2==0}}"></template>
+            </block>
+        </view>
+        <view class="right">
+            <block wx:for="{{contentList}}" wx:key="_id">
+                <template is="item" data="{{...item}}" wx:if="{{index%2==1}}"></template>
+            </block>
+        </view>
+    </view>
+</template>
+
+<template name="item">
+    <view class="item" data-param="{{_id}}" bindtap="go2detail">
+        <view class="item_title_box">
+            <text class="item_title">{{title}}</text>
+        </view>
+        <view class="item_poster" style="height:{{dateFr.getRandom(14,20)}}vh;width:92%;">
+            <image class="item_img" src="{{poster}}" mode="aspectFit"></image>
+            <!-- <view style="width:100%;height:100%;background:yellow;"></view> -->
+        </view>
+        <view class="item_intro">
+            <text class="name_title">{{description}}</text>
+            <view class="item_viewnum">
+                <text class="fa fa-eye"></text>
+                <text>{{viewnum}}</text>
+            </view>
+        </view>
+    </view>
+</template>

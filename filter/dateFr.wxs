@@ -57,10 +57,15 @@ var DateFr = {
 			}
 		}
 		return format;
+	},
+	getRandom: function (n, m) {
+		// console.log("call......");
+		return Math.floor(Math.random() * (m - n + 1) + n);
 	}
 }
 
 module.exports = {
 	getDate: DateFr.getDate,
-	dateFormat: DateFr.dateFormat
+	dateFormat: DateFr.dateFormat,
+	getRandom: DateFr.getRandom
 }

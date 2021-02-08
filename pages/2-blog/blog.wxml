@@ -4,6 +4,7 @@
 <import src="./list_type/type_default.wxml"></import>
 <import src="./list_type/type_1.wxml"></import>
 <import src="./list_type/type_2.wxml"></import>
+<import src="./list_type/type_3.wxml"></import>
 
 <!-- 自定义头部 -->
 <view class='nav bg-black' style='height:{{navH}}px;'>
@@ -32,7 +33,7 @@
 			<!-- 标题 -->
 			<!-- <view class="t_title">Blog</view> -->
 			<!-- 列表 -->
-			<template wx:if="{{listType}}" is="{{listType}}" data="{{contentList:contentList,noContent:noContent}}"></template>
+			<template wx:if="{{listType}}" is="{{listType}}" data="{{contentList:contentList,noContent:noContent,note:note}}"></template>
 		</view>
 	</view>
 </scroll-view>
