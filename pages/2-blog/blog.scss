@@ -447,17 +447,23 @@ page {
 					font-size: 20rpx;
 				}
 
-				.item_viewnum {
-					text.fa {
-						margin-right: 8rpx;
-					}
-
-					text:last-child {
-						color: #c4c4c4;
-						text-decoration: underline;
-						line-height: 10rpx;
+				.item_intro_list{
+					display: flex;
+					// justify-content: space-around;
+					.item_viewnum,.item_comment,.item_tag {
+						margin-right: 20rpx;
+						text.fa {
+							margin-right: 8rpx;
+						}
+	
+						text:last-child {
+							color: #c4c4c4;
+							text-decoration: underline;
+							line-height: 10rpx;
+						}
 					}
 				}
+
 			}
 		}
 	}

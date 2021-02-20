@@ -27,9 +27,19 @@
         </view>
         <view class="item_intro">
             <text class="name_title">{{description}}</text>
-            <view class="item_viewnum">
-                <text class="fa fa-eye"></text>
-                <text>{{viewnum}}</text>
+            <view class="item_intro_list">
+                <view class="item_viewnum">
+                    <text class="fa fa-eye"></text>
+                    <text>{{viewnum}}</text>
+                </view>
+                <view class="item_comment">
+                    <text class="fa fa-comment-o"></text>
+                    <text>{{comment.length}}</text>
+                </view>
+                <view class="item_tag">
+                    <text class="fa fa-tag"></text>
+                    <text>{{category[0]['name']}}</text>
+                </view>
             </view>
         </view>
     </view>
